@@ -9,7 +9,7 @@ type Props = {
 }
 
 export function Header({ toggleTheme }: Props) {
-  const { colors, title } = useContext(ThemeContext)
+  const { title } = useContext(ThemeContext)
 
   return (
     <Container>
