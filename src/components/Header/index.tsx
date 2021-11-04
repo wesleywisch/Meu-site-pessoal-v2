@@ -2,15 +2,19 @@ import React, { useContext } from "react";
 import { ThemeContext } from 'styled-components';
 import Switch from 'react-switch';
 
+import { Link } from 'react-router-dom';
+
 import { Container, Title, HeaderContainer, Ul, Li, Navegacao } from './styles';
 import { BarsProgress } from "../BarsProgress";
+
+import { Link as LinkScroll } from "react-scroll";
 
 type Props = {
   toggleTheme: () => void;
 }
 
 export function Header({ toggleTheme }: Props) {
-  const { title } = useContext(ThemeContext)
+  const { title } = useContext(ThemeContext);
 
   return (
     <>
@@ -22,11 +26,68 @@ export function Header({ toggleTheme }: Props) {
         <HeaderContainer>
           <Navegacao>
             <Ul>
-              <Li>Sobre</Li>
-              <Li>Portfólio</Li>
-              <Li>Skills</Li>
-              <Li>Contato</Li>
-              <Li className="github">Github</Li>
+              <Li>
+                <LinkScroll
+                  activeClass="active"
+                  to="sobre"
+                  spy={true}
+                  smooth={true}
+                  offset={-85}
+                  duration={700}
+                  href="#sobre"
+                >
+                  Sobre
+                </LinkScroll>
+              </Li>
+
+              <Li>
+                <LinkScroll
+                  activeClass="active"
+                  to="portfolio"
+                  spy={true}
+                  smooth={true}
+                  offset={-85}
+                  duration={700}
+                  href="#portfolio"
+                >
+                  Portfólio
+                </LinkScroll>
+              </Li>
+
+              <Li>
+                <LinkScroll
+                  activeClass="active"
+                  to="skills"
+                  spy={true}
+                  smooth={true}
+                  offset={-85}
+                  duration={700}
+                  href="#skills"
+                >
+                  Skills
+                </LinkScroll>
+              </Li>
+
+              <Li>
+                <LinkScroll
+                  activeClass="active"
+                  to="contato"
+                  spy={true}
+                  smooth={true}
+                  offset={-85}
+                  duration={700}
+                  href="#contato"
+                >
+                  Contato
+                </LinkScroll>
+              </Li>
+
+              {/* <Li><a href="#sobre">Sobre</a></Li>
+              <Li><a href="#portfolio">Sobre</a></Li>
+              <Li><a href="#skills">Sobre</a></Li>
+              <Li><a href="#Contato">Sobre</a></Li> */}
+
+              <Li className="github"><Link to="/github">Github</Link></Li>
             </Ul>
           </Navegacao>
 
