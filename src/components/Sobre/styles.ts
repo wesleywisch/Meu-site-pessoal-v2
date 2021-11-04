@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin-top: 85px; */
+  margin-top: 85px;
 `;
 
 export const ContainerParagrafo = styled.div`

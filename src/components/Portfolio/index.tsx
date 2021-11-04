@@ -26,10 +26,10 @@ export function Portfolio(){
         BorderSize={15}
       />
 
-      {/* <Card 
+      <Card 
         onClick={openModal} 
         src="https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1403647406" 
-      /> */}
+      />
 
       {modalOpen && <Modal modalOpen={modalOpen} closeModal={closeModal} />}
     </Container>

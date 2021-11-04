@@ -32,7 +32,7 @@ export function Header({ toggleTheme }: Props) {
                   to="sobre"
                   spy={true}
                   smooth={true}
-                  offset={70}
+                  offset={-85}
                   duration={700}
                   href="#sobre"
                 >
@@ -46,7 +46,7 @@ export function Header({ toggleTheme }: Props) {
                   to="portfolio"
                   spy={true}
                   smooth={true}
-                  offset={70}
+                  offset={-85}
                   duration={700}
                   href="#portfolio"
                 >
@@ -60,9 +60,9 @@ export function Header({ toggleTheme }: Props) {
                   to="skills"
                   spy={true}
                   smooth={true}
-                  offset={70}
+                  offset={-85}
                   duration={700}
-                  href="#Skills"
+                  href="#skills"
                 >
                   Skills
                 </LinkScroll>
@@ -74,13 +74,18 @@ export function Header({ toggleTheme }: Props) {
                   to="contato"
                   spy={true}
                   smooth={true}
-                  offset={-70}
+                  offset={-85}
                   duration={700}
-                  href="#Contato"
+                  href="#contato"
                 >
                   Contato
                 </LinkScroll>
               </Li>
+
+              {/* <Li><a href="#sobre">Sobre</a></Li>
+              <Li><a href="#portfolio">Sobre</a></Li>
+              <Li><a href="#skills">Sobre</a></Li>
+              <Li><a href="#Contato">Sobre</a></Li> */}
 
               <Li className="github"><Link to="/github">Github</Link></Li>
             </Ul>
