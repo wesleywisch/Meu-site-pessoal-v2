@@ -6,7 +6,7 @@ import { Title } from "../Title";
 
 export function Sobre() {
   return (
-    <Container>
+    <Container id="sobre">
       <Title
         title="Sobre"
         fontSize={3}

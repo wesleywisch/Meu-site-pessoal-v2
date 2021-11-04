@@ -1,0 +1,11 @@
+import styled from "styled-components";
+
+export const Container = styled.section`
+  width: 100%;
+  height: 600px;
+  background-color: green;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;

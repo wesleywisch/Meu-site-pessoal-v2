@@ -7,11 +7,13 @@ import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { light } from './styles/themes/light';
 import { dark } from './styles/themes/dark';
 
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import { useTheme } from './hooks/useTheme';
 
-import { Header } from './components/Header'
-import { Sobre } from './components/Sobre';
-import { Portfolio } from './components/Portfolio';
+import { Github } from './components/Github';
+
+import { Home } from './pages/Home';
 
 Modal.setAppElement('#root');
 
@@ -25,9 +27,17 @@ export function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header toggleTheme={toggleTheme} />
-      <Sobre />
-      <Portfolio />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home toggleTheme={toggleTheme} />
+          </Route>
+
+          <Route exact path="/github">
+            <Github />
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 };

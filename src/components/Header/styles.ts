@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-  position: sticky;
-  top: 0px;
   height: 85px;
   width: 100%;
   background: ${props => props.theme.colors.primary};
@@ -40,6 +38,7 @@ export const Li = styled.li`
 
   :hover{
     background-color: #18BC9C;
+    transition: .4s;
   }
 `;
 
