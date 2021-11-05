@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 100%;
   min-height: 400px;
   background-color: green;
