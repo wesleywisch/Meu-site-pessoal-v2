@@ -14,6 +14,7 @@ import { useTheme } from './hooks/useTheme';
 import { Github } from './components/Github';
 
 import { Home } from './pages/Home';
+import { Header } from './components/Header';
 
 Modal.setAppElement('#root');
 
@@ -34,6 +35,7 @@ export function App() {
           </Route>
 
           <Route exact path="/github">
+            <Header github={true} toggleTheme={toggleTheme} />
             <Github />
           </Route>
         </Switch>

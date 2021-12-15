@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   position: fixed;
+  z-index: 99;
   top: 0;
   height: 85px;
   width: 100%;
@@ -13,7 +14,9 @@ export const Container = styled.header`
   padding: 0 30px;
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  width: 300px;
+`;
 
 export const HeaderContainer = styled.div`
   max-width: 900px;
