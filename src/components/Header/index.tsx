@@ -1,115 +1,132 @@
-import React, { useContext } from "react";
+import { useEffect, useState, useContext } from "react";
+
 import { ThemeContext } from 'styled-components';
+
+import { animateScroll as scroll } from 'react-scroll';
+
 import Switch from 'react-switch';
 
-import { Link } from 'react-router-dom';
+import { FaBars } from 'react-icons/fa';
+import { IconContext } from 'react-icons/lib';
 
-import { Container, Title, HeaderContainer, Ul, Li, Navegacao } from './styles';
-import { BarsProgress } from "../BarsProgress";
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  NavBtn,
+} from './styles';
 
-import { Link as LinkScroll } from "react-scroll";
-
-type Props = {
+type HeaderProps = {
   toggleTheme: () => void;
-  github?: boolean;
+  toggle: () => void;
 }
 
-export function Header({ toggleTheme, github }: Props) {
+export function Header({ toggleTheme, toggle }: HeaderProps) {
   const { title } = useContext(ThemeContext);
 
+  const [scrollNav, setScrollNav] = useState(false);
+
+  function changeNav() {
+    if (window.scrollY >= 80) {
+      setScrollNav(true);
+    } else {
+      setScrollNav(false);
+    }
+  }
+
+  function toggleHome() {
+    scroll.scrollToTop();
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', changeNav);
+  }, [])
+
   return (
-    <>
-      <BarsProgress />
+    <IconContext.Provider value={{ color: '#fff' }}>
+      <Nav scrollNav={scrollNav}>
+        <NavbarContainer>
+          <NavLogo to="/" onClick={toggleHome}>Wesley Wisch</NavLogo>
 
-      <Container>
-        <Title>Wesley Wisch</Title>
+          <MobileIcon onClick={toggle}>
+            <FaBars />
+          </MobileIcon>
 
-        <HeaderContainer>
-          <Navegacao>
-            {!github ? (
-              <Ul>
-                <Li>
-                  <LinkScroll
-                    activeClass="active"
-                    to="sobre"
-                    spy={true}
-                    smooth={true}
-                    offset={-85}
-                    duration={700}
-                    href="#sobre"
-                  >
-                    Sobre
-                  </LinkScroll>
-                </Li>
+          <NavMenu>
+            <NavItem>
+              <NavLinks
+                to="about"
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="active"
+              >
+                Profile
+              </NavLinks>
+            </NavItem>
 
-                <Li>
-                  <LinkScroll
-                    activeClass="active"
-                    to="portfolio"
-                    spy={true}
-                    smooth={true}
-                    offset={-85}
-                    duration={700}
-                    href="#portfolio"
-                  >
-                    Portfólio
-                  </LinkScroll>
-                </Li>
+            <NavItem>
+              <NavLinks
+                to="aboutMe"
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="active"
+              >
+                AboutMe
+              </NavLinks>
+            </NavItem>
 
-                <Li>
-                  <LinkScroll
-                    activeClass="active"
-                    to="skills"
-                    spy={true}
-                    smooth={true}
-                    offset={-85}
-                    duration={700}
-                    href="#skills"
-                  >
-                    Skills
-                  </LinkScroll>
-                </Li>
+            <NavItem>
+              <NavLinks
+                to="resume"
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="active"
+              >
+                Resume
+              </NavLinks>
+            </NavItem>
 
-                <Li>
-                  <LinkScroll
-                    activeClass="active"
-                    to="contato"
-                    spy={true}
-                    smooth={true}
-                    offset={-85}
-                    duration={700}
-                    href="#contato"
-                  >
-                    Contato
-                  </LinkScroll>
-                </Li>
+            <NavItem>
+              <NavLinks
+                to="contactMe"
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-80}
+                activeClass="active"
+              >
+                ContactMe
+              </NavLinks>
+            </NavItem>
+          </NavMenu>
 
-                <Li className="github"><Link to="/github">Github</Link></Li>
-              </Ul>
-            ) : (
-              <Li>
-                <Link to='/'>
-                  Voltar
-                </Link>
-              </Li>
-            )}
-          </Navegacao>
-
-          <Switch
-            className="switch"
-            onChange={toggleTheme}
-            checked={title === 'dark'}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={25}
-            width={50}
-            handleDiameter={20}
-            offHandleColor="#000"
-            offColor="#fff"
-            onColor="#121214"
-          />
-        </HeaderContainer>
-      </Container>
-    </>
+          <NavBtn>
+            <Switch
+              className="switch"
+              onChange={toggleTheme}
+              checked={title === 'dark'}
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={25}
+              width={50}
+              handleDiameter={20}
+              offHandleColor="#000"
+              offColor="#fff"
+              onColor="#121214"
+            />
+          </NavBtn>
+        </NavbarContainer>
+      </Nav>
+    </IconContext.Provider>
   );
 }
