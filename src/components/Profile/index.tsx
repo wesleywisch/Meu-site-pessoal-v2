@@ -69,14 +69,15 @@ export function Profile() {
                   loop={Infinity}
                   steps={[
                     "Desenvolvedor Front-End",
-                    2000,
+                    3000,
                     "ReactJs",
-                    2000,
+                    3000,
                     "HTML/CSS",
-                    2000,
+                    3000,
                     "Javascript/Typescript",
-                    2000,
+                    3000,
                   ]}
+                  wrapper="p"
                 />
               </ProfilePainelH2>
 

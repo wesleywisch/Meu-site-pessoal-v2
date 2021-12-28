@@ -36,10 +36,6 @@ const highlightedBtn = css`
   color: ${props => props.theme.colors.white};
   font-size: 12px;
   background-color: #ff5823;
-
-  @media screen and (max-width: 810px) {
-    margin: 0 !important;
-  }
 `;
 
 export const ProfileContainer = styled.section`
@@ -134,6 +130,10 @@ export const ProfilePainelH2 = styled.h2`
 export const ProfileSpanRoleTagline = styled.span`
   font-size: 19px;
   margin: 5px 0 0 0;
+
+  @media screen and (max-width: 530px) {
+    padding: 0 20px;
+  }
 `;
 
 export const ProfileOptions = styled.div`
@@ -141,7 +141,10 @@ export const ProfileOptions = styled.div`
     display: flex;
     justify-content: space-between;
     text-align: center;
-    margin: 0 10px;
+  }
+
+  @media screen and (max-width: 530px) {
+    padding: 0 20px;
   }
 `;
 
