@@ -19,6 +19,11 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  body{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body, input, textarea, select, button{
     font: 400 1rem 'Roboto', sans-serif;
     color: ${props => props.theme.colors.text};
