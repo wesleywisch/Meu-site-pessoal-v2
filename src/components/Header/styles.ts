@@ -1,99 +1,58 @@
 import styled from "styled-components";
-import { Link as LinkS } from 'react-scroll';
 
-type PropsStyles = {
-  scrollNav: boolean;
+type NavLinkProps = {
+  isActive: boolean;
 }
 
-export const Nav = styled.nav`
-  background: ${({ scrollNav }: PropsStyles) => scrollNav ? '#000' : 'transparent'};
-  height: 80px;
-  margin-top: -80px;
-  display: flex;
+export const HeaderContainer = styled.header`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  
-  @media screen and (max-width: 960px) {
-    transition: .8s all ease;
+  height: 4rem;
+  border-bottom: 1px solid ${props => props.theme.colors.backgroundLight};
+`;
+
+export const HeaderName = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0 2rem;
+
+  h1{
+    color: ${props => props.theme.colors.text};
+    font-size: 2rem;
   }
 `;
 
-export const NavbarContainer = styled.div`
+export const HeaderNav = styled.nav`
   display: flex;
-  justify-content: space-between;
-  height: 80px;
-  z-index: 1;
-  width: 100%;
-  padding: 0 24px;
-  max-width: 1100px;
-`;
+  justify-content: center;
 
-export const NavLogo = styled(LinkS)`
-  color: #fff;
-  justify-self: flex-start;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  margin-left: 24px;
-  font-weight: bold;
-  text-decoration: none;
-`;
-
-export const MobileIcon = styled.div`
-  display: none;
-
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: 8px;
-    right: 5px;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #fff;
+  ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
   }
 `;
 
-export const NavMenu = styled.ul`
+export const HeaderSwitch = styled.div`
   display: flex;
-  align-items: center;
-  list-style: none;
-  text-align: center;
-  margin-right: -22px;
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
+  justify-content: center;
+  margin: 0 2rem;
 `;
 
-export const NavItem = styled.li`
-  height: 80px;
-`;
+export const NavLinkContainer = styled.li<NavLinkProps>`
+  a {
+    text-decoration: uppercase;
+    color: ${props => props.isActive ?
+      props.theme.colors.primary :
+      props.theme.colors.textHighlight
+    };
+    transition: .5s;
 
-export const NavLinks = styled(LinkS)`
-  color: #fff;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0 1rem;
-  height: 100%;
-  cursor: pointer;
-
-  &.active {
-    border-bottom: 3px solid #01bf71;
-  }
-`;
-
-export const NavBtn = styled.nav`
-  display: flex;
-  align-items: center;
-
-  @media screen and (max-width: 768px){
-    display: none;
+    &:hover{
+      filter: brightness(0.8);
+    }
   }
 `;

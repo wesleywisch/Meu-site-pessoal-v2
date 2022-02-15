@@ -1,19 +1,15 @@
 import { useState } from 'react';
-
-import { GlobalStyle } from './styles/global';
-
+import { ThemeProvider, DefaultTheme } from 'styled-components';
 import Modal from 'react-modal';
 
-import { ThemeProvider, DefaultTheme } from 'styled-components';
+import { GlobalStyle } from './styles/global';
 
 import { light } from './styles/themes/light';
 import { dark } from './styles/themes/dark';
 
 import { useTheme } from './hooks/useTheme';
 
-import { Profile } from './components/Profile';
 import { Header } from './components/Header';
-import { Sidebar } from './components/Sidebar';
 
 Modal.setAppElement('#root');
 
@@ -32,9 +28,7 @@ export function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Sidebar toggleTheme={toggleTheme} isOpen={isOpen} toggle={toggle} />
       <Header toggleTheme={toggleTheme} toggle={toggle} />
-      <Profile />
     </ThemeProvider>
   );
 };

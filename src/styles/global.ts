@@ -19,19 +19,20 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  body{
+  body {
+    font: 400 1rem 'Roboto', sans-serif;
+    background: ${props => props.theme.colors.background};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  body, input, textarea, select, button{
-    font: 400 1rem 'Roboto', sans-serif;
-    color: ${props => props.theme.colors.text};
-    background: ${props => props.theme.colors.background};
-  }
-
   button{
     cursor: pointer;
+  }
+
+  img{
+    width: 100%;
+    max-width: 100%;
   }
 
   a{
@@ -43,37 +44,22 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  .react-modal-overlay{
-    background: rgba(0,0,0, 0.5);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .react-modal-content{
+  .container{
     width: 100%;
-    max-width: 576px;
-    background: var(--background);
-    padding: 3rem;
-    position: relative;
-    border-radius: 0.24rem;
-  }
+    margin: 0 auto;
+    max-width: 85rem;
+    padding: 0 1rem;
 
-  .react-modal-close{
-    position: absolute;
-    right: 1.5rem;
-    top: 1.5rem;
-    border: 0;
-    background: transparent;
-    transition: filter 0.2s;
-    
-    &:hover{
-      filter: brightness(0.8);
+    @media screen and (max-width: 1450px) {
+      max-width: 70rem;
+    }
+
+    @media screen and (max-width: 1000px) {
+      max-width: 50rem;
+    }
+
+    @media screen and (max-width: 700px) {
+      padding: 0 2rem;
     }
   }
 `;
