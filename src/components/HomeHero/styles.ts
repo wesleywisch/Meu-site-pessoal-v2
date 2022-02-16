@@ -9,10 +9,10 @@ export const HomeHeroContainer = styled.section`
   margin-top: 5rem;
 
   > img {
-    width: 40rem;
+    width: 35rem;
     border-radius: 50%;
     border: solid .2rem #0D1117;
-    flex: 1%;
+    flex: 1;
   }
 
   > div {
@@ -21,7 +21,7 @@ export const HomeHeroContainer = styled.section`
 
   @media screen and (max-width: 1450px) {
     > img {
-      width: 30rem;
+      width: 25rem;
     }
 
     > div {
@@ -49,12 +49,12 @@ export const TextContainer = styled.section`
   margin-bottom: 2rem;
 
   h3{
-    font-size: 8rem;
+    font-size: 6rem;
     color: ${props => props.theme.colors.primary};
   }
 
   h4{
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 400;
     color: ${props => props.theme.colors.secondary};
   }
@@ -62,10 +62,6 @@ export const TextContainer = styled.section`
   @media screen and (max-width: 1450px) {
     h3{
       font-size: 5rem;
-    }
-
-    h4{
-      font-size: 2rem;
     }
   }
 
@@ -85,10 +81,14 @@ export const TextContainer = styled.section`
 `;
 
 export const InfosContainer = styled.section`
-  width: 100%;
+  width: 85%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @media screen and (max-width: 1450px) {
+    width: 100%;
+  }
 `;
 
 export const CodeItem = styled.pre`
