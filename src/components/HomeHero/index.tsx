@@ -15,7 +15,7 @@ export function HomeHero() {
 
         <InfosContainer>
           <CodeItem>
-            <span className='comment'>//Minha apresentação</span>
+            <span className='comment'>{'\u002F'}{'\u002F'}Minha apresentação</span>
             <span className='purple'>Infos</span> {'\u007B'}
             <div>
               Nome: <span className='blue'>Wesley,</span>
