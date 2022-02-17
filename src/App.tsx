@@ -13,6 +13,7 @@ import { useTheme } from './hooks/useTheme';
 import { Header } from './components/Header';
 
 import { Home } from './pages/Home';
+import { Sidebar } from './components/Sidebar';
 
 Modal.setAppElement('#root');
 
@@ -31,6 +32,7 @@ export function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Sidebar toggleTheme={toggleTheme} isOpen={isOpen} toggle={toggle} />
       <Header toggleTheme={toggleTheme} toggle={toggle} />
 
       <Routes>
