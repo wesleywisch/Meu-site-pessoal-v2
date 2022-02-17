@@ -4,7 +4,9 @@ import Switch from 'react-switch';
 
 import { NavLink } from './NavLink';
 
-import { HeaderContainer, HeaderName, HeaderNav, HeaderSwitch } from './styles';
+import { HeaderContainer, HeaderName, MobileIcon, HeaderNav, HeaderSwitch } from './styles';
+
+import { FaBars } from 'react-icons/fa';
 
 type HeaderProps = {
   toggleTheme: () => void;
@@ -19,6 +21,10 @@ export function Header({ toggleTheme, toggle }: HeaderProps) {
       <HeaderName>
         <h1>Wesley Wisch</h1>
       </HeaderName>
+
+      <MobileIcon onClick={toggle}>
+        <FaBars />
+      </MobileIcon>
 
       <HeaderNav>
         <ul>
