@@ -97,7 +97,7 @@ export const CodeItem = styled.pre`
   font-family: monospace;
   font-weight: 300;
   color: #fff;
-  width: 24rem;
+  width: 28rem;
   align-self: flex-start;
   transition: 1s;
 
@@ -129,12 +129,16 @@ export const CodeItem = styled.pre`
   }
 
   @media screen and (max-width: 1450px) {
-    width: 18rem;
+    width: 24rem;
     padding: 1.5rem;
     font-size: 0.8rem;
   }
 
   @media screen and (max-width: 1000px) {
     width: 100%;
+  }
+
+  @media screen and (max-width: 340px) {
+    font-size: .7rem;
   }
 `;
