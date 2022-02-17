@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot-Image
+Disallow: /static/media/profile.2b3138eb.jpg
