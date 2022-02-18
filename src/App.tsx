@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
-import Modal from 'react-modal';
 import { Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from './styles/global';
@@ -10,12 +9,11 @@ import { dark } from './styles/themes/dark';
 
 import { useTheme } from './hooks/useTheme';
 
+import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 
 import { Home } from './pages/Home';
-import { Sidebar } from './components/Sidebar';
-
-Modal.setAppElement('#root');
+import { Projetos } from './pages/Projetos';
 
 export function App() {
   const [theme, setTheme] = useTheme<DefaultTheme>('theme', light);
@@ -37,6 +35,7 @@ export function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/projetos' element={<Projetos />} />
       </Routes>
     </ThemeProvider>
   );
