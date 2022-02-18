@@ -19,14 +19,14 @@ export const LatestProjectsContainer = styled.section`
   }
 
   > button {
-    background: ${props => props.theme.colors.primary};
+    border: 2px solid ${props => props.theme.colors.primary};
+    background: transparent;
     padding: .8rem 3rem;
     border-radius: .5rem;
-    border: none;
     transition: .5s;
 
     &:hover {
-      filter: brightness(1.07);
+      filter: brightness(0.8);
     }
 
     a {

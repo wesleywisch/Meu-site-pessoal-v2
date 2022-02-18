@@ -1,7 +1,7 @@
 import { SectionTitleContainer } from './styles';
 
 type SectionTitleProps = {
-  title: string;
+  title: string | React.ReactNode;
   description?: string | React.ReactNode;
 
 }

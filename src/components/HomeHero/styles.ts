@@ -9,7 +9,7 @@ export const HomeHeroContainer = styled.section`
   margin-top: 5rem;
 
   > img {
-    width: 35rem;
+    width: 25rem;
     border-radius: 50%;
     border: solid .2rem #0D1117;
     flex: 1;
@@ -17,19 +17,24 @@ export const HomeHeroContainer = styled.section`
 
   > div {
     flex: 4;
+    margin-left: 5rem;
   }
 
   @media screen and (max-width: 1450px) {
-    > img {
-      width: 25rem;
-    }
-
     > div {
       flex: 1;
+    }
+
+    img {
+      flex: 0.5;
     }
   }
 
   @media screen and (max-width: 1000px) {
+    > div {
+      margin-left: 0;
+    }
+    
     > img {
       width: 22rem;
     }
