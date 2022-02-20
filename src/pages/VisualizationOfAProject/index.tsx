@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -28,7 +29,7 @@ export function VisualizationOfAProject() {
   useEffect(() => {
     async function getProjectsApiPrismic() {
       try {
-        const visualizationProjectResponse = await prismic.getByUID('projetos', String(slugParams), {});
+        const visualizationProjectResponse = await prismic.getByUID('projeto', String(slugParams), {});
 
         const VisualizationProject = {
           slug: visualizationProjectResponse.uid as string,
