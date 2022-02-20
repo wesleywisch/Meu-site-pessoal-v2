@@ -29,7 +29,7 @@ export function Header({ toggleTheme, toggle }: HeaderProps) {
       <HeaderNav>
         <ul>
           <NavLink title='Home' path='/' />
-          <NavLink title='Projetos' path='/projetos' />
+          <NavLink title='Projetos' path='/projetos' includes />
         </ul>
       </HeaderNav>
 

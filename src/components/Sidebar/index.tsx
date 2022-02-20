@@ -33,7 +33,7 @@ export function Sidebar({ isOpen, toggle, toggleTheme }: SidebarProps) {
       <SidebarWrapper>
         <SidebarMenu>
           <NavLink title="Home" path="/" toggle={toggle} />
-          <NavLink title="Projetos" path="/projetos" toggle={toggle} />
+          <NavLink title="Projetos" path="/projetos" toggle={toggle} includes />
         </SidebarMenu>
 
         <SideBtnWrap>
