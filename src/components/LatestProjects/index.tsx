@@ -5,7 +5,20 @@ import { SectionTitle } from '../reusable/SectionTitle';
 
 import { LatestProjectsContainer } from './styles';
 
-export function LatestProjects() {
+type getLatestProjectsApiPrismicProps = {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  link: string;
+  thumbnail: string;
+}
+
+type LatestProjectsProps = {
+  latestProjects: getLatestProjectsApiPrismicProps[];
+}
+
+export function LatestProjects({ latestProjects }: LatestProjectsProps) {
   return (
     <LatestProjectsContainer>
       <SectionTitle
@@ -13,26 +26,15 @@ export function LatestProjects() {
       />
 
       <section>
-        <LatestProjectsCard
-          title='Projeto 1'
-          type='Website'
-          slug='teste'
-          img='https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2018/10/Como-Fazer-Um-Portfolio-Digital.png'
-        />
-
-        <LatestProjectsCard
-          title='Projeto 1'
-          type='Website'
-          slug='teste'
-          img='https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2018/10/Como-Fazer-Um-Portfolio-Digital.png'
-        />
-
-        <LatestProjectsCard
-          title='Projeto 1'
-          type='Website'
-          slug='teste'
-          img='https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2018/10/Como-Fazer-Um-Portfolio-Digital.png'
-        />
+        {latestProjects.slice(0, 3).map((project, key) => (
+          <LatestProjectsCard
+            key={key}
+            title={project.title}
+            type={project.type}
+            slug={project.slug}
+            img={project.thumbnail}
+          />
+        ))}
       </section>
 
       <button type='button'>

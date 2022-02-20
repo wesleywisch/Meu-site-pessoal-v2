@@ -1,27 +1,74 @@
-// import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { getPrismicClient } from '../../services/prismic';
 
 import { BannerProject } from '../../components/reusable/BannerProject';
+import { LoadingScreen } from '../../components/LoadingScreen';
 
 import { VisualizationOfAProjectContainer } from './styles';
 
-export function VisualizationOfAProject() {
-  // let { slugParams } = useParams();
+type getVisualizationProjectProps = {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  link: string;
+  thumbnail: string;
+}
 
-  return(
+export function VisualizationOfAProject() {
+  const [loading, setLoading] = useState(false);
+  const [visualizationProject, setVisualizationProject] = useState({} as getVisualizationProjectProps);
+
+  const { slugParams } = useParams();
+
+  const prismic = getPrismicClient();
+
+  useEffect(() => {
+    async function getProjectsApiPrismic() {
+      try {
+        const visualizationProjectResponse = await prismic.getByUID('projetos', String(slugParams), {});
+
+        const VisualizationProject = {
+          slug: visualizationProjectResponse.uid as string,
+          title: visualizationProjectResponse.data.title as string,
+          type: visualizationProjectResponse.data.type as string,
+          description: visualizationProjectResponse.data.description as string,
+          link: visualizationProjectResponse.data.link.url as string,
+          thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
+        }
+
+        setVisualizationProject(VisualizationProject);
+      }
+      catch (err) {
+        console.log(err); // por enquanto deixar console depois adicionar o toast
+      }
+      finally {
+        setLoading(false);
+      }
+    }
+
+    getProjectsApiPrismic();
+  }, []);
+
+  if (loading) {
+    return <LoadingScreen />
+  }
+
+  return (
     <VisualizationOfAProjectContainer>
-      <BannerProject 
-        title='Projeto 01'
-        type='Website'
-        imgUrl='https://www.hostinger.com.br/tutoriais/wp-content/uploads/sites/12/2018/10/Como-Fazer-Um-Portfolio-Digital.png'
+      <BannerProject
+        title={visualizationProject.title}
+        type={visualizationProject.type}
+        imgUrl={visualizationProject.thumbnail}
       />
 
       <div className='content'>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolore eveniet perferendis odio neque nulla, ipsam ipsum mollitia ullam soluta ab eum quam possimus sit vel voluptatum cupiditate assumenda necessitatibus nemo laboriosam. Ipsa temporibus quidem fugit impedit similique eius doloremque molestias blanditiis atque, assumenda quaerat nisi recusandae sequi accusamus cupiditate quas. Enim vitae odio fugit odit. Magni blanditiis optio deserunt libero sunt corrupti nisi fuga, incidunt suscipit, quasi fugiat maxime adipisci itaque sapiente. Odio iusto, cupiditate animi deleniti aliquam nisi.
-        </p>
+        <p>{visualizationProject.description}</p>
 
         <button type='button'>
-          <a href="#o">Ver projeto online</a>
+          <a href={visualizationProject.link}>Ver projeto online</a>
         </button>
       </div>
     </VisualizationOfAProjectContainer>
