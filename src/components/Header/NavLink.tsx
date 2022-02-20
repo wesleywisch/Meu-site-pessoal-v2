@@ -7,14 +7,23 @@ type NavLinkProps = {
   title: string;
   path: string;
   toggle?: () => void;
+  includes?: boolean;
 }
 
-export function NavLink({ title, path, toggle }: NavLinkProps) {
+export function NavLink({ title, path, toggle, includes = false }: NavLinkProps) {
   const location = useLocation();
 
-  const isActive = location.pathname === path
+  function verifyIfActive() {
+    if (includes) {
+      return location.pathname.includes(path);
+    }
 
-  return(
+    return path === location.pathname;
+  }
+
+  const isActive = verifyIfActive();
+
+  return (
     <NavLinkContainer isActive={isActive} onClick={toggle}>
       <Link to={path}>{title}</Link>
     </NavLinkContainer>

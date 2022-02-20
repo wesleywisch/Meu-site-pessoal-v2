@@ -14,6 +14,7 @@ import { Header } from './components/Header';
 
 import { Home } from './pages/Home';
 import { Projetos } from './pages/Projetos';
+import { VisualizationOfAProject } from './pages/VisualizationOfAProject';
 
 export function App() {
   const [theme, setTheme] = useTheme<DefaultTheme>('theme', light);
@@ -36,6 +37,7 @@ export function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/projetos' element={<Projetos />} />
+        <Route path='/projetos/:slugParams' element={<VisualizationOfAProject />} />
       </Routes>
     </ThemeProvider>
   );
