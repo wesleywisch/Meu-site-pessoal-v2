@@ -4,7 +4,7 @@ import { HomeHeroContainer, TextContainer, InfosContainer, CodeItem } from './st
 
 export function HomeHero() {
   return (
-    <HomeHeroContainer>
+    <HomeHeroContainer data-aos="fade-up">
       <img src={Profile} alt="Foto de perfil" />
 
       <div>
@@ -14,7 +14,7 @@ export function HomeHero() {
         </TextContainer>
 
         <InfosContainer>
-          <CodeItem>
+          <CodeItem data-aos="zoom-in">
             <span className='comment'>{'\u002F'}{'\u002F'}Minha apresentação</span>
             <span className='purple'>Infos</span> {'\u007B'}
             <div>
@@ -26,7 +26,7 @@ export function HomeHero() {
             {'\u007D'}
           </CodeItem>
 
-          <CodeItem>
+          <CodeItem data-aos="zoom-in">
             <span className='purple'>Cargo</span> {'\u007B'}
             <div>
               Função: <span className='blue'>Desenvolvedor Front-End Júnior,</span>

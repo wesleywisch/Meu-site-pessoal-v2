@@ -8,7 +8,7 @@ type KnowledgeCardProps = {
 
 export function KnowledgeCard({ title, icon, colorIcon }: KnowledgeCardProps) {
   return (
-    <KnowledgeCardContainer colorIcon={colorIcon}>
+    <KnowledgeCardContainer colorIcon={colorIcon} data-aos="fade-up">
       <p>{title}</p>
       {icon}
     </KnowledgeCardContainer>

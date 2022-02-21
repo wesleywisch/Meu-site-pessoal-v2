@@ -8,7 +8,7 @@ type SectionTitleProps = {
 
 export function SectionTitle({ title, description }: SectionTitleProps) {
   return (
-    <SectionTitleContainer>
+    <SectionTitleContainer data-aos="fade-right">
       <h2>#{title}</h2>
 
       {description && 

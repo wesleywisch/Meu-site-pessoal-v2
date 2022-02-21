@@ -11,7 +11,7 @@ type ProjectsCardProps = {
 
 export function ProjectsCard({ title, type, imgUrl, slug }: ProjectsCardProps) {
   return (
-    <ProjectsCardContainer imgUrl={imgUrl}>
+    <ProjectsCardContainer imgUrl={imgUrl} data-aos="zoom-in">
       <Link to={`/projetos/${slug}`}>
         <div className='overlay'></div>
 

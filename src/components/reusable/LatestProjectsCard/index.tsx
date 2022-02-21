@@ -13,7 +13,7 @@ type LatestProjectsCardProps = {
 
 export function LatestProjectsCard({ title, type, slug, img }: LatestProjectsCardProps) {
   return (
-    <LatestProjectsCardContainer imgUrl={img}>
+    <LatestProjectsCardContainer imgUrl={img} data-aos="fade-up">
       <section>
         <div className="overlay"></div>
 

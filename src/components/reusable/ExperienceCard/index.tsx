@@ -8,7 +8,7 @@ type ExperienceCardProps = {
 
 export function ExperienceCard({ year, title, description }: ExperienceCardProps) {
   return(
-    <ExperienceCardContainer>
+    <ExperienceCardContainer data-aos="fade-up">
       <div>
         <h3>{year}</h3>
         <h4>{title}</h4>
