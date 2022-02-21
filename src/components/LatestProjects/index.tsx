@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+import { LoadingScreen } from '../LoadingScreen';
 import { LatestProjectsCard } from '../reusable/LatestProjectsCard';
 import { SectionTitle } from '../reusable/SectionTitle';
 
@@ -26,6 +27,12 @@ export function LatestProjects({ latestProjects }: LatestProjectsProps) {
       />
 
       <section>
+        {latestProjects.length === 0 && (
+          <div className='carrying'>
+            <p><LoadingScreen /> Carregando...</p>
+          </div>
+        )}
+
         {latestProjects.slice(0, 3).map((project, key) => (
           <LatestProjectsCard
             key={key}

@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import Prismic from '@prismicio/client';
 
 import { getPrismicClient } from '../../services/prismic';
@@ -26,6 +28,10 @@ export function Home() {
   const [latestProjects, setLatestProjects] = useState<getLatestProjectsApiPrismicProps[]>([]);
 
   const prismic = getPrismicClient();
+
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, [])
 
   useEffect(() => {
     async function getProjectsApiPrismic() {

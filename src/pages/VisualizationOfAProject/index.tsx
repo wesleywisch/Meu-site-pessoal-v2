@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AiOutlineGithub } from 'react-icons/ai';
+import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 import { getPrismicClient } from '../../services/prismic';
 
@@ -53,25 +55,33 @@ export function VisualizationOfAProject() {
     getProjectsApiPrismic();
   }, []);
 
-  if (loading) {
-    return <LoadingScreen />
-  }
-
   return (
     <VisualizationOfAProjectContainer>
-      <BannerProject
-        title={visualizationProject.title}
-        type={visualizationProject.type}
-        imgUrl={visualizationProject.thumbnail}
-      />
+      {loading === true ? (
+        <div className='carrying'>
+          <p><LoadingScreen /> Carregando...</p>
+        </div>
+      ) : (
+        <>
+          <BannerProject
+            title={visualizationProject.title}
+            type={visualizationProject.type}
+            imgUrl={visualizationProject.thumbnail}
+          />
 
-      <div className='content'>
-        <p>{visualizationProject.description}</p>
+          <div className='content'>
+            <p>{visualizationProject.description}</p>
 
-        <button type='button'>
-          <a href={visualizationProject.link}>Ver projeto online</a>
-        </button>
-      </div>
+            <button type='button'>
+              {String(visualizationProject.link).includes('github') ? (
+                <a href={visualizationProject.link}><AiOutlineGithub className='github' size={26} color="#AFB5BB" />Ver projeto no github</a>
+              ) : (
+                <a href={visualizationProject.link}>Ver projeto online <BsFillArrowRightCircleFill className='sites' size={26} /></a>
+              )}
+            </button>
+          </div>
+        </>
+      )}
     </VisualizationOfAProjectContainer>
   );
 }

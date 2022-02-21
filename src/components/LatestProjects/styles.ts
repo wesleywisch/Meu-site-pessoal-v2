@@ -13,6 +13,19 @@ export const LatestProjectsContainer = styled.section`
     flex-direction: column;
     gap: 4rem;
 
+    > div.carrying {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: 1.2rem;
+        color: ${props => props.theme.colors.secondary};
+        text-align: center;
+      }
+    }
+
     @media screen and (max-width: 1000px) {
       gap: 2rem;
     }
