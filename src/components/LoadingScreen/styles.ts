@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-export const LoadingScreenContainer = styled.section`
+export const LoadingScreenContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
+  width: 10rem;
+  height: 10rem;
 `;
 
 export const SpinnerContainer = styled.div`

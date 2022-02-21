@@ -6,6 +6,19 @@ export const VisualizationOfAProjectContainer = styled.main`
   display: flex;
   flex-direction: column;
 
+  > div.carrying {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: 1.2rem;
+        color: ${props => props.theme.colors.secondary};
+        text-align: center;
+      }
+    }
+
   > div.content {
     margin: 2rem 0;
     width: 100%;
@@ -35,6 +48,17 @@ export const VisualizationOfAProjectContainer = styled.main`
         color: #fff;
         font-size: 1.5rem;
         font-weight: 300;
+        display: flex;
+        align-items: center;
+
+        svg.github {
+          margin-right: .5rem;
+        }
+
+        svg.sites {
+          margin-left: .5rem;
+          color: ${props => props.theme.colors.primary};
+        }
       }
     }
 
@@ -50,6 +74,14 @@ export const VisualizationOfAProjectContainer = styled.main`
 
         a {
           font-size: .9rem;
+        }
+      }
+    }
+
+    @media screen and (max-width: 340px) {
+      button {
+        a {
+          font-size: .8rem;
         }
       }
     }

@@ -10,6 +10,19 @@ export const ProjetosContainer = styled.main`
   max-width: 85rem;
   padding: 0 1rem;
 
+  > div.carrying {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        font-size: 1.2rem;
+        color: ${props => props.theme.colors.secondary};
+        text-align: center;
+      }
+    }
+
     @media screen and (max-width: 1450px) {
       max-width: 70rem;
     }

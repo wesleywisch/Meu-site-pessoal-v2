@@ -5,6 +5,7 @@ import Prismic from '@prismicio/client';
 import { getPrismicClient } from '../../services/prismic';
 
 import { ProjectsCard } from '../../components/reusable/ProjectsCard';
+import { LoadingScreen } from '../../components/LoadingScreen';
 
 import { ProjetosContainer } from './styles';
 
@@ -19,12 +20,14 @@ type getProjectsApiPrismicProps = {
 
 export function Projetos() {
   const [projects, setProjects] = useState<getProjectsApiPrismicProps[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const prismic = getPrismicClient();
 
   useEffect(() => {
     async function getProjectsApiPrismic() {
       try {
+        setLoading(true);
         const projectResponse = await prismic.query(
           [Prismic.Predicates.at('document.type', 'projeto')],
           { orderings: '[document.first_publication_date desc]' },
@@ -44,6 +47,9 @@ export function Projetos() {
       catch (err) {
         console.log(err);  // por enquanto deixar console depois adicionar o toast
       }
+      finally {
+        setLoading(false);
+      }
     }
 
     getProjectsApiPrismic();
@@ -51,6 +57,12 @@ export function Projetos() {
 
   return (
     <ProjetosContainer>
+      {loading && (
+        <div className='carrying'>
+          <p><LoadingScreen /> Carregando...</p>
+        </div>
+      )}
+
       <div>
         {projects.map((project, key) => (
           <ProjectsCard
