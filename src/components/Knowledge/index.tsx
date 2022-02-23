@@ -1,6 +1,8 @@
-import { AiFillHtml5 } from 'react-icons/ai';
-import { FaCss3Alt, FaReact } from 'react-icons/fa';
+import { AiFillHtml5, AiFillGithub } from 'react-icons/ai';
+import { FaCss3Alt, FaReact, FaNodeJs } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io';
+import { SiNextdotjs, SiTypescript } from 'react-icons/si';
+import { DiGit } from 'react-icons/di';
 
 import { KnowledgeCard } from '../reusable/KnowledgeCard';
 import { SectionTitle } from '../reusable/SectionTitle';
@@ -34,9 +36,45 @@ export function Knowledge() {
         />
 
         <KnowledgeCard
+          title='Typescript'
+          icon={<SiTypescript />}
+          colorIcon='#0074C2'
+        />
+
+        <KnowledgeCard
           title='React'
           icon={<FaReact />}
           colorIcon='#61DAFB'
+        />
+
+        <KnowledgeCard
+          title='React Native'
+          icon={<FaReact />}
+          colorIcon='#61DAFB'
+        />
+
+        <KnowledgeCard
+          title='Next'
+          icon={<SiNextdotjs />}
+          colorIcon='##000000'
+        />
+
+        <KnowledgeCard
+          title='NodeJs'
+          icon={<FaNodeJs />}
+          colorIcon='#89BB3C'
+        />
+
+        <KnowledgeCard
+          title='Git'
+          icon={<DiGit />}
+          colorIcon='#E44C30'
+        />
+
+        <KnowledgeCard
+          title='Github'
+          icon={<AiFillGithub />}
+          colorIcon='#AFB5BB'
         />
       </section>
     </KnowledgeContainer>

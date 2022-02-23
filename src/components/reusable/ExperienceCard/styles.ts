@@ -21,6 +21,20 @@ export const ExperienceCardContainer = styled.div`
     align-items: flex-start;
     transition: .5s;
 
+    button {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 2rem;
+      align-items: flex-end;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+    }
+
     h3{
       color: ${props => props.theme.colors.primary};
       font-size: 2rem;

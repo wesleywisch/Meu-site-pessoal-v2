@@ -9,6 +9,8 @@ export const KnowledgeContainer = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5rem;
     gap: 8rem;
 
     @media screen and (max-width: 1000px) {
@@ -17,8 +19,6 @@ export const KnowledgeContainer = styled.section`
 
     @media screen and (max-width: 700px) {
       gap: 3rem;
-      flex-wrap: wrap;
-      margin-top: 5rem;
     }
   }
 `;

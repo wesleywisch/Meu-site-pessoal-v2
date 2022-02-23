@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import Prismic from '@prismicio/client';
+import { toast } from 'react-toastify';
 
 import { getPrismicClient } from '../../services/prismic';
 
@@ -45,7 +46,7 @@ export function Projetos() {
         setProjects(projectFormated);
       }
       catch (err) {
-        console.log(err);  // por enquanto deixar console depois adicionar o toast
+        toast.error('Não foi possível carregar as informações. Tente novamente');
       }
       finally {
         setLoading(false);

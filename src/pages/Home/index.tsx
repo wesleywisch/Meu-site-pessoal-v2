@@ -10,10 +10,10 @@ import { HomeHero } from '../../components/HomeHero';
 import { Experience } from '../../components/Experience';
 import { LatestProjects } from '../../components/LatestProjects';
 import { Knowledge } from '../../components/Knowledge';
-import { ContactForm } from '../../components/ContactForm';
 import { Footer } from '../../components/Footer';
 
 import { HomeContainer } from './styles';
+import { toast } from 'react-toastify';
 
 type getLatestProjectsApiPrismicProps = {
   slug: string;
@@ -53,7 +53,7 @@ export function Home() {
         setLatestProjects(latestProjectFormated);
       }
       catch (err) {
-        console.log(err)  // por enquanto deixar console depois adicionar o toast
+        toast.error('Não foi possível carregar as informações do últimos projetos. Tente novamente');
       }
     }
 
@@ -68,7 +68,6 @@ export function Home() {
           <Experience />
           <LatestProjects latestProjects={latestProjects} />
           <Knowledge />
-          <ContactForm />
         </div>
       </HomeContainer>
       <Footer />

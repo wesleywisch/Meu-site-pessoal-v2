@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ThemeContext } from 'styled-components';
 import Switch from 'react-switch';
 
@@ -19,7 +20,9 @@ export function Header({ toggleTheme, toggle }: HeaderProps) {
   return (
     <HeaderContainer>
       <HeaderName>
-        <h1>Wesley Wisch</h1>
+        <Link to='/'>
+          <h1>Wesley Wisch</h1>
+        </Link>
       </HeaderName>
 
       <MobileIcon onClick={toggle}>

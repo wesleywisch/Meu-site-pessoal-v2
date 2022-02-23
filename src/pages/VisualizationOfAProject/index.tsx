@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
@@ -31,6 +32,7 @@ export function VisualizationOfAProject() {
   useEffect(() => {
     async function getProjectsApiPrismic() {
       try {
+        setLoading(true);
         const visualizationProjectResponse = await prismic.getByUID('projeto', String(slugParams), {});
 
         const VisualizationProject = {
@@ -45,7 +47,7 @@ export function VisualizationOfAProject() {
         setVisualizationProject(VisualizationProject);
       }
       catch (err) {
-        console.log(err); // por enquanto deixar console depois adicionar o toast
+        toast.error('Não foi possível carregar as informações. Tente novamente');
       }
       finally {
         setLoading(false);
