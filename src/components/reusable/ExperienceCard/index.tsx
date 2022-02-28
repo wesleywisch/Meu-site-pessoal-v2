@@ -20,7 +20,9 @@ export function ExperienceCard({ year, title, description, titleButton, linkButt
         <h4>{title}</h4>
         <p>{description}</p>
         {titleButton && (
-          <button onClick={() => handleOpenView(linkButton)}>{titleButton}</button>
+          <button onClick={() => handleOpenView(linkButton)}>
+            <a target="_blank" rel="noreferrer" href={linkButton}>{titleButton}</a>
+          </button>
         )}
       </div>
     </ExperienceCardContainer>

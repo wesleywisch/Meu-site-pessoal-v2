@@ -102,9 +102,10 @@ export const CodeItem = styled.pre`
   font-family: monospace;
   font-weight: 300;
   color: #fff;
-  width: 28rem;
+  width: 32rem;
   align-self: flex-start;
   transition: 1s !important;
+  font-size: 1.2rem;
 
   &:hover{
     filter: brightness(1.2);
@@ -143,7 +144,11 @@ export const CodeItem = styled.pre`
     width: 100%;
   }
 
-  @media screen and (max-width: 340px) {
+  @media screen and (max-width: 540px) {
+    font-size: 0.9rem;
+  }
+
+  @media screen and (max-width: 360px) {
     font-size: .7rem;
   }
 `;

@@ -6,7 +6,8 @@ export const ExperienceContainer = styled.section`
   > section {
     width: 100%;
     margin-top: 7rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
 
     padding-bottom: 8rem;
@@ -17,6 +18,7 @@ export const ExperienceContainer = styled.section`
     }
 
     @media screen and (max-width: 700px) {
+      grid-template-columns: 1fr;
       flex-direction: column;
       margin-top: 5rem;
       gap: 2rem;

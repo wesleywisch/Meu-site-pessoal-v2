@@ -56,7 +56,7 @@ export function Knowledge() {
         <KnowledgeCard
           title='Next'
           icon={<SiNextdotjs />}
-          colorIcon='##000000'
+          colorIcon='##191919'
         />
 
         <KnowledgeCard
