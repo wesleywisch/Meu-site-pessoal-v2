@@ -15,6 +15,27 @@ export const BannerProjectContainer = styled.div<BannerProjectContainerProps>`
   justify-content: flex-start;
   align-items: flex-end;
 
+  button {
+    position: absolute;
+    top: 1rem;
+    width: 3rem;
+    height: 3rem;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    
+    svg {
+      font-size: 2rem;
+      color: #fff;
+
+      path {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
   section {
     z-index: 2;
 

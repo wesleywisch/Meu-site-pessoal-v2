@@ -32,15 +32,17 @@ export const FooterContainer = styled.footer`
       align-items: center;
       gap: 1rem;
 
-      svg{
-        width: 2rem;
-        height: 2rem;
-        color: ${props => props.theme.colors.text};
-        transition: .5s;
-        cursor: pointer;
+      a {
+        svg{
+          width: 2rem;
+          height: 2rem;
+          color: ${props => props.theme.colors.text};
+          transition: .5s;
+          cursor: pointer;
 
-        &:hover {
-          color: ${props => props.theme.colors.primary};
+          &:hover {
+            color: ${props => props.theme.colors.primary};
+          }
         }
       }
     }
@@ -65,9 +67,11 @@ export const FooterContainer = styled.footer`
       > section {
         gap: .5rem;
 
-        svg {
-          width: 1.5rem;
-          height: 1.5rem;
+        a {
+          svg {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
         }
       }
     }

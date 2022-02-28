@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ThemeProvider, DefaultTheme } from 'styled-components';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
@@ -22,7 +22,6 @@ export function App() {
   const [theme, setTheme] = useTheme<DefaultTheme>('theme', light);
   const [isOpen, setIsOpen] = useState(false);
 
-  const { slugParams } = useParams();
 
   function toggleTheme() {
     setTheme(theme.title === 'light' ? dark : light);
@@ -34,22 +33,16 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {slugParams?.includes('/' || '/projetos' || `/projetos/${slugParams}`) ? (
-        <h1>Não encontrado</h1>
-      ) : (
-        <>
-        <ToastContainer />
-        <GlobalStyle />
-        <Sidebar toggleTheme={toggleTheme} isOpen={isOpen} toggle={toggle} />
-        <Header toggleTheme={toggleTheme} toggle={toggle} />
+      <ToastContainer />
+      <GlobalStyle />
+      <Sidebar toggleTheme={toggleTheme} isOpen={isOpen} toggle={toggle} />
+      <Header toggleTheme={toggleTheme} toggle={toggle} />
 
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/projetos' element={<Projetos />} />
-          <Route path='/projetos/:slugParams' element={<VisualizationOfAProject />} />
-        </Routes>
-      </>
-      )}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/projetos' element={<Projetos />} />
+        <Route path='/projetos/:slugParams' element={<VisualizationOfAProject />} />
+      </Routes>
     </ThemeProvider>
   );
 };

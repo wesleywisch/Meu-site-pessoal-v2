@@ -21,17 +21,35 @@ export function Footer() {
         <button onClick={handleScrollTop}>Voltar ao topo</button>
 
         <section>
-          <SiMicrosoftoutlook
-            onClick={() => handleRedirect('mailto:wesley_wisch@hotmail.com')}
-          />
+          <a 
+            href="mailto:wesley_wisch@hotmail.com"
+            target='_blank'
+            rel="noreferrer"
+          >
+            <SiMicrosoftoutlook
+              onClick={() => handleRedirect('mailto:wesley_wisch@hotmail.com')}
+            />
+          </a>
 
-          <AiOutlineGithub
-            onClick={() => handleRedirect('https://github.com/wesleywisch')}
-          />
+          <a 
+            href="https://github.com/wesleywisch"
+            target='_blank'
+            rel="noreferrer"
+          >
+            <AiOutlineGithub
+              onClick={() => handleRedirect('https://github.com/wesleywisch')}
+            />
+          </a>
 
-          <AiFillLinkedin
-            onClick={() => handleRedirect('https://www.linkedin.com/in/wesley-wisch/')}
-          />
+          <a 
+            href="https://www.linkedin.com/in/wesley-wisch/"
+            target='_blank'
+            rel="noreferrer"
+          >
+            <AiFillLinkedin
+              onClick={() => handleRedirect('https://www.linkedin.com/in/wesley-wisch/')}
+            />
+          </a>
         </section>
       </div>
     </FooterContainer>

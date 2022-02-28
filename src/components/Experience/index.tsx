@@ -15,7 +15,9 @@ export function Experience() {
         <ExperienceCard
           year={2021}
           title="Certificado do termino de HTML | CSS | Java Script"
-          description=''
+          description='
+            Essa foi a minha primeira jornada em um curso aonde eu aprendi com o professor Igor, HTML, CSS e Javascript.
+          '
           titleButton='Visualizar credencial'
           linkButton='https://programadorbr.com/certificado/DVWBWW12HT33599'
         />
@@ -23,7 +25,9 @@ export function Experience() {
         <ExperienceCard
           year={2021}
           title="Certificado do termino de Firebase | jQuery | Bootstrap"
-          description=''
+          description='
+            Indo mais afundo aprendi um dos banco de dados noSql(firebase), um framework CSS(Bootstrap).
+          '
           titleButton='Visualizar credencial'
           linkButton='https://programadorbr.com/certificado/DVWBWW12FI33599'
         />
@@ -31,7 +35,9 @@ export function Experience() {
         <ExperienceCard
           year={2021}
           title="Certificado do termino NodeJs | MongoDB"
-          description=''
+          description='
+            Indo rumo ao Back-end aprendi NodeJs com o padrão MVC com ejs. e também construindo uma api com NodeJs e como banco de dados o MongoDB.
+          '
           titleButton='Visualizar credencial'
           linkButton='https://programadorbr.com/certificado/DVWBWW12NO33599'
         />
@@ -39,7 +45,9 @@ export function Experience() {
         <ExperienceCard
           year={2021}
           title="Certificado do termino da Trilha ReactJs"
-          description=''
+          description='
+            Voltando ao Front-end, aprendo mais e mais sobre esse mundo com o React, onde tivemos teste unitários, integração com api de pagamento e muito mais.
+          '
           titleButton='Visualizar credencial'
           linkButton='https://app.rocketseat.com.br/api/certificates/pdf/0de8e222-e9fd-4663-ba43-7e268e7278a9'
         />

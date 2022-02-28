@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { AiOutlineGithub } from 'react-icons/ai';
+import { IoMdArrowRoundBack } from 'react-icons/io';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
 import { getPrismicClient } from '../../services/prismic';
@@ -18,7 +19,12 @@ type getVisualizationProjectProps = {
   type: string;
   description: string;
   link: string;
+  techs: [
+    text: string,
+  ];
   thumbnail: string;
+  createdAt: string;
+  updateAt: string;
 }
 
 export function VisualizationOfAProject() {
@@ -41,7 +47,10 @@ export function VisualizationOfAProject() {
           type: visualizationProjectResponse.data.type as string,
           description: visualizationProjectResponse.data.description as string,
           link: visualizationProjectResponse.data.link.url as string,
+          techs: visualizationProjectResponse.data.techs,
           thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
+          createdAt: visualizationProjectResponse.data.createdat as string,
+          updateAt: visualizationProjectResponse.data.updateat as string,
         }
 
         setVisualizationProject(VisualizationProject);
@@ -57,6 +66,10 @@ export function VisualizationOfAProject() {
     getProjectsApiPrismic();
   }, []);
 
+  function handleOpenLink(link: string) {
+    window.open(link);
+  }
+
   return (
     <VisualizationOfAProjectContainer>
       {loading === true ? (
@@ -69,19 +82,65 @@ export function VisualizationOfAProject() {
             title={visualizationProject.title}
             type={visualizationProject.type}
             imgUrl={visualizationProject.thumbnail}
+            arrowLeft={<IoMdArrowRoundBack />}
           />
 
-          <div className='content'>
+          {visualizationProject.createdAt && (
+            <div className="date">
+              <p>
+                {new Date(visualizationProject.createdAt).toLocaleDateString()}
+                {visualizationProject.updateAt && ` | Atualizada em ${new Date(visualizationProject.updateAt).toLocaleDateString()}`}
+              </p>
+            </div>
+          )}
+
+          <section className='content'>
+            <h2>Descrição:</h2>
+
             <p>{visualizationProject.description}</p>
 
-            <button type='button'>
+            {visualizationProject.techs && (
+              <section className="tech">
+                <h2>Tecnologias utilizadas: </h2>
+
+                <ul>
+                  {visualizationProject.techs.map((tech, key) => {
+                    type teste = {
+                      text?: string;
+                    }
+
+                    const { text } = tech as teste;
+
+                    return (
+                      <li key={key}>
+                        {text}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </section>
+            )}
+
+            <button type='button' onClick={() => handleOpenLink(visualizationProject.link)}>
               {String(visualizationProject.link).includes('github') ? (
-                <a href={visualizationProject.link}><AiOutlineGithub className='github' size={26} color="#AFB5BB" />Ver projeto no github</a>
+                <a 
+                  target='_blank' 
+                  rel='noreferrer' 
+                  href={visualizationProject.link}
+                  >
+                    <AiOutlineGithub className='github' size={26} color="#AFB5BB" />Ver projeto no github
+                </a>
               ) : (
-                <a href={visualizationProject.link}>Ver projeto online <BsFillArrowRightCircleFill className='sites' size={26} /></a>
+                <a 
+                  target='_blank' 
+                  rel='noreferrer' 
+                  href={visualizationProject.link}
+                  >
+                    Ver projeto online <BsFillArrowRightCircleFill className='sites' size={26} />
+                </a>
               )}
             </button>
-          </div>
+          </section>
         </>
       )}
     </VisualizationOfAProjectContainer>

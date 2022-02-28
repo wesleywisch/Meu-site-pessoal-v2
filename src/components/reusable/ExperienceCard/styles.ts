@@ -14,7 +14,7 @@ export const ExperienceCardContainer = styled.div`
     background: ${props => props.theme.colors.gradient};
     padding: 1rem;
     padding-top: 2.5rem;
-    height: 20rem;
+    height: 25rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -57,7 +57,7 @@ export const ExperienceCardContainer = styled.div`
 
   @media screen and (max-width: 1000px){
     > div {
-      height: 15rem;
+      height: 22rem;
       padding-top: 1.5rem;
 
       h3{
@@ -70,6 +70,10 @@ export const ExperienceCardContainer = styled.div`
       }
 
       p{
+        font-size: .9rem;
+      }
+
+      button {
         font-size: .9rem;
       }
     }
@@ -98,6 +102,10 @@ export const ExperienceCardContainer = styled.div`
 
       p{
         font-size: 1rem;
+      }
+
+      button {
+        font-size: 1.2rem;
       }
     }
   }
