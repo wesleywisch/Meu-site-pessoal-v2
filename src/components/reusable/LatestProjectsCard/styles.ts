@@ -72,7 +72,7 @@ export const LatestProjectsCardContainer = styled.div<LatestProjectsCardPropsSty
     border: none;
     
     a{
-      color: #fff;
+      color: ${props => props.theme.colors.white};
       font-size: 2rem;
       display: flex;
       align-items: center;

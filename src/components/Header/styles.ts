@@ -51,7 +51,7 @@ export const MobileIcon = styled.div`
     align-items: center;
     font-size: 1.8rem;
     cursor: pointer;
-    color: #fff;
+    color: ${props => props.theme.colors.white};
   }
 `;
 
@@ -64,16 +64,6 @@ export const HeaderNav = styled.nav`
     gap: 2rem;
     align-items: center;
   }
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-
-export const HeaderSwitch = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 0 2rem;
 
   @media screen and (max-width: 768px) {
     display: none;

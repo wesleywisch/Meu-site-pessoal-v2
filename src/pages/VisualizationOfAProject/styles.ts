@@ -66,7 +66,7 @@ export const VisualizationOfAProjectContainer = styled.main`
 
       a {
         text-transform: uppercase;
-        color: #fff;
+        color: ${props => props.theme.colors.white};
         font-size: 1.5rem;
         font-weight: 300;
         display: flex;
@@ -113,7 +113,7 @@ export const VisualizationOfAProjectContainer = styled.main`
           align-items: center;
           width: fit-content;
           font-size: 1rem;
-          color: #fff;
+          color: ${props => props.theme.colors.white};
           padding: .5rem 1rem;
           background: transparent;
           border: 2px solid ${props => props.theme.colors.primary}; 

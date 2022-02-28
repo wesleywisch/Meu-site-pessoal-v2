@@ -44,7 +44,7 @@ export const LatestProjectsContainer = styled.section`
 
     a {
       text-transform: uppercase;
-      color: #fff;
+      color: ${props => props.theme.colors.white};
       font-size: 1.5rem;
       font-weight: 300;
     }

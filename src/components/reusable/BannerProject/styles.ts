@@ -21,12 +21,12 @@ export const BannerProjectContainer = styled.div<BannerProjectContainerProps>`
     width: 3rem;
     height: 3rem;
     background: transparent;
-    border: 2px solid #fff;
+    border: 2px solid ${props => props.theme.colors.white};
     border-radius: 50%;
     
     svg {
       font-size: 2rem;
-      color: #fff;
+      color: ${props => props.theme.colors.white};
 
       path {
         display: flex;

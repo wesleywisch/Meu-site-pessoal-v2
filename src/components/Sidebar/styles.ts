@@ -21,7 +21,7 @@ export const SidebarContainer = styled.aside`
 `;
 
 export const CloseIcon = styled(FaTimes)`
-  color: #fff;
+  color: ${props => props.theme.colors.white};
 `;
 
 export const Icon = styled.div`
@@ -35,7 +35,7 @@ export const Icon = styled.div`
 `;
 
 export const SidebarWrapper = styled.div`
-  color: #fff;
+  color: ${props => props.theme.colors.white};
 `;
 
 export const SidebarMenu = styled.ul`
@@ -47,9 +47,4 @@ export const SidebarMenu = styled.ul`
   @media screen and (max-width: 480px) {
     grid-template-rows: repeat(3, 60px);
   }
-`;
-
-export const SideBtnWrap = styled.div`
-  display: flex;
-  justify-content: center;
 `;

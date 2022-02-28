@@ -30,7 +30,7 @@ export const ExperienceCardContainer = styled.div`
       background: transparent;
       border: none;
       font-size: 1.2rem;
-      color: #fff;
+      color: ${props => props.theme.colors.white};
       font-weight: bold;
       text-align: center;
     }

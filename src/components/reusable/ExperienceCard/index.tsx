@@ -13,12 +13,13 @@ export function ExperienceCard({ year, title, description, titleButton, linkButt
     window.open(link);
   }
 
-  return(
+  return (
     <ExperienceCardContainer data-aos="fade-up">
       <div>
         <h3>{year}</h3>
         <h4>{title}</h4>
         <p>{description}</p>
+
         {titleButton && (
           <button onClick={() => handleOpenView(linkButton)}>
             <a target="_blank" rel="noreferrer" href={linkButton}>{titleButton}</a>

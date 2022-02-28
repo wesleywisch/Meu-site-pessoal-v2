@@ -1,8 +1,7 @@
-export const light = {
-  title: 'light',
-
+export const colors = {
   colors: {
     background: '#11172B',
+    white: '#f8f8f8',
     backgroundLight: '#1B2138',
     primary: '#0EE7B7',
     secondary: '#7AC7E3',

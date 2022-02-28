@@ -96,12 +96,12 @@ export const InfosContainer = styled.section`
   }
 `;
 
-export const CodeItem = styled.pre`
+export const CodeItem = styled.div`
   background: ${props => props.theme.colors.gradient};
   padding: 2rem;
   font-family: monospace;
   font-weight: 300;
-  color: #fff;
+  color: ${props => props.theme.colors.white};
   width: 32rem;
   align-self: flex-start;
   transition: 1s !important;

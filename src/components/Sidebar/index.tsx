@@ -1,9 +1,3 @@
-import { useContext } from "react";
-
-import { ThemeContext } from 'styled-components';
-
-import Switch from 'react-switch';
-
 import { NavLink } from '../Header/NavLink';
 
 import {
@@ -12,17 +6,14 @@ import {
   CloseIcon,
   SidebarWrapper,
   SidebarMenu,
-  SideBtnWrap,
 } from './styles';
 
 type SidebarProps = {
   isOpen: boolean;
   toggle: () => void;
-  toggleTheme: () => void;
 }
 
-export function Sidebar({ isOpen, toggle, toggleTheme }: SidebarProps) {
-  const { title } = useContext(ThemeContext);
+export function Sidebar({ isOpen, toggle }: SidebarProps) {
 
   return (
     <SidebarContainer isOpen={isOpen}>
@@ -35,22 +26,6 @@ export function Sidebar({ isOpen, toggle, toggleTheme }: SidebarProps) {
           <NavLink title="Home" path="/" toggle={toggle} />
           <NavLink title="Projetos" path="/projetos" toggle={toggle} includes />
         </SidebarMenu>
-
-        <SideBtnWrap>
-          <Switch
-            className="switch"
-            onChange={toggleTheme}
-            checked={title === 'dark'}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={25}
-            width={50}
-            handleDiameter={20}
-            offHandleColor="#000"
-            offColor="#fff"
-            onColor="#121214"
-          />
-        </SideBtnWrap>
       </SidebarWrapper>
     </SidebarContainer>
   );
