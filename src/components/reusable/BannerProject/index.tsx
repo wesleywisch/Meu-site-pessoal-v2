@@ -26,8 +26,8 @@ export function BannerProject({ title, type, imgUrl, arrowLeft }: BannerProjectP
       )}
 
       <section>
-        <h2>{title}</h2>
-        <h3>{type}</h3>
+        <h2 data-aos="fade-right">{title}</h2>
+        <h3 data-aos="fade-right">{type}</h3>
       </section>
     </BannerProjectContainer>
   );

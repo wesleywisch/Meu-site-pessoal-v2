@@ -17,6 +17,7 @@ describe('Component header', () => {
       </MemoryRouter>
     );
 
+    expect(getByText('Wesley Wisch').closest('a')).toHaveAttribute('href', '/');
     expect(getByText('Wesley Wisch')).toBeInTheDocument();
     expect(screen.getByText('Wesley Wisch')).toBeInTheDocument();
     expect(screen.getByText('Home')).toBeInTheDocument();

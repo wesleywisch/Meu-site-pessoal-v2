@@ -59,9 +59,11 @@ export const VisualizationOfAProjectContainer = styled.main`
       border-radius: .5rem;
       transition: .5s;
       margin-top: 2rem;
+      transition: 1s;
 
       &:hover {
-        filter: brightness(0.8);
+        box-shadow: 0px 0px 12px 1px #0EE7B7;
+        -webkit-box-shadow: 0px 0px 12px 1px #0EE7B7;
       }
 
       a {
@@ -118,6 +120,16 @@ export const VisualizationOfAProjectContainer = styled.main`
           background: transparent;
           border: 2px solid ${props => props.theme.colors.primary}; 
           border-radius: 1rem;
+          transition: 1s;
+
+          &:hover {
+            color: ${props => props.theme.colors.background};
+            background: ${props => props.theme.colors.primary};
+            font-weight: 400;
+            opacity: .8;
+            box-shadow: 0px 0px 12px 1px #0EE7B7;
+            -webkit-box-shadow: 0px 0px 12px 1px #0EE7B7; 
+          }
         }
       }
     }
