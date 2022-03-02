@@ -18,7 +18,8 @@ type getVisualizationProjectProps = {
   title: string;
   type: string;
   description: string;
-  link: string;
+  projetoGithub?: string;
+  projetoOnline?: string;
   techs: [
     text: string,
   ];
@@ -46,7 +47,8 @@ export function VisualizationOfAProject() {
           title: visualizationProjectResponse.data.title as string,
           type: visualizationProjectResponse.data.type as string,
           description: visualizationProjectResponse.data.description as string,
-          link: visualizationProjectResponse.data.link.url as string,
+          projetoGithub: visualizationProjectResponse.data.linkgithub.url as string,
+          projetoOnline: visualizationProjectResponse.data.linkonline.url as string,
           techs: visualizationProjectResponse.data.techs,
           thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
           createdAt: visualizationProjectResponse.data.createdat as string,
@@ -56,7 +58,7 @@ export function VisualizationOfAProject() {
         setVisualizationProject(VisualizationProject);
       }
       catch (err) {
-        toast.error('Não foi possível carregar as informações. Tente novamente');
+        toast.warn('Não foi possível carregar as informações. Tente novamente');
       }
       finally {
         setLoading(false);
@@ -66,7 +68,7 @@ export function VisualizationOfAProject() {
     getProjectsApiPrismic();
   }, []);
 
-  function handleOpenLink(link: string) {
+  function handleOpenLink(link?: string) {
     window.open(link);
   }
 
@@ -121,25 +123,31 @@ export function VisualizationOfAProject() {
               </section>
             )}
 
-            <button type='button' onClick={() => handleOpenLink(visualizationProject.link)}>
-              {String(visualizationProject.link).includes('github') ? (
-                <a 
-                  target='_blank' 
-                  rel='noreferrer' 
-                  href={visualizationProject.link}
-                  >
-                    <AiOutlineGithub className='github' size={26} color="#AFB5BB" />Ver projeto no github
-                </a>
-              ) : (
-                <a 
-                  target='_blank' 
-                  rel='noreferrer' 
-                  href={visualizationProject.link}
+            <div className="buttonLink">
+              {visualizationProject.projetoOnline && (
+                <button type='button' onClick={() => handleOpenLink(visualizationProject.projetoOnline)}>
+                  <a
+                    target='_blank'
+                    rel='noreferrer'
+                    href={visualizationProject.projetoOnline}
                   >
                     Ver projeto online <BsFillArrowRightCircleFill className='sites' size={26} />
-                </a>
+                  </a>
+                </button>
               )}
-            </button>
+
+              {visualizationProject.projetoGithub && (
+                <button type='button' onClick={() => handleOpenLink(visualizationProject.projetoGithub)}>
+                  <a
+                    target='_blank'
+                    rel='noreferrer'
+                    href={visualizationProject.projetoGithub}
+                  >
+                    <AiOutlineGithub className='github' size={26} color="#AFB5BB" />Ver projeto no github
+                  </a>
+                </button>
+              )}
+            </div>
           </section>
         </>
       )}

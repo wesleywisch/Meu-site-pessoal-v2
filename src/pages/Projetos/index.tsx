@@ -14,8 +14,6 @@ type getProjectsApiPrismicProps = {
   slug: string;
   title: string;
   type: string;
-  description: string;
-  link: string;
   thumbnail: string;
 }
 
@@ -38,15 +36,13 @@ export function Projetos() {
           slug: project.uid as string,
           title: project.data.title as string,
           type: project.data.type as string,
-          description: project.data.description as string,
-          link: project.data.link.url as string,
           thumbnail: project.data.thumbnail.url as string,
         }));
 
         setProjects(projectFormated);
       }
       catch (err) {
-        toast.error('Não foi possível carregar as informações. Tente novamente');
+        toast.warn('Não foi possível carregar as informações. Tente novamente');
       }
       finally {
         setLoading(false);

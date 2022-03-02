@@ -19,8 +19,6 @@ type getLatestProjectsApiPrismicProps = {
   slug: string;
   title: string;
   type: string;
-  description: string;
-  link: string;
   thumbnail: string;
 }
 
@@ -45,15 +43,13 @@ export function Home() {
           slug: project.uid as string,
           title: project.data.title as string,
           type: project.data.type as string,
-          description: project.data.description as string,
-          link: project.data.link.url as string,
           thumbnail: project.data.thumbnail.url as string,
         }));
 
         setLatestProjects(latestProjectFormated);
       }
       catch (err) {
-        toast.error('Não foi possível carregar as informações do últimos projetos. Tente novamente');
+        toast.warn('Não foi possível carregar as informações do últimos projetos. Tente novamente');
       }
     }
 

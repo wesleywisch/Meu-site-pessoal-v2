@@ -52,39 +52,6 @@ export const VisualizationOfAProjectContainer = styled.main`
       text-align: justify;
     }
 
-    button {
-      border: 2px solid ${props => props.theme.colors.primary};
-      background: transparent;
-      padding: .8rem 3rem;
-      border-radius: .5rem;
-      transition: .5s;
-      margin-top: 2rem;
-      transition: 1s;
-
-      &:hover {
-        box-shadow: 0px 0px 12px 1px #0EE7B7;
-        -webkit-box-shadow: 0px 0px 12px 1px #0EE7B7;
-      }
-
-      a {
-        text-transform: uppercase;
-        color: ${props => props.theme.colors.white};
-        font-size: 1.5rem;
-        font-weight: 300;
-        display: flex;
-        align-items: center;
-
-        svg.github {
-          margin-right: .5rem;
-        }
-
-        svg.sites {
-          margin-left: .5rem;
-          color: ${props => props.theme.colors.primary};
-        }
-      }
-    }
-
    > section.tech {
       display: flex;
       flex-direction: column;
@@ -129,6 +96,70 @@ export const VisualizationOfAProjectContainer = styled.main`
             opacity: .8;
             box-shadow: 0px 0px 12px 1px #0EE7B7;
             -webkit-box-shadow: 0px 0px 12px 1px #0EE7B7; 
+          }
+        }
+      }
+    }
+
+    div.buttonLink { 
+      display: flex;
+      align-items: center;
+
+      button {
+        width: 28rem;
+        border: 2px solid ${props => props.theme.colors.primary};
+        background: transparent;
+        padding: .8rem 3rem;
+        border-radius: .5rem;
+        transition: .5s;
+        margin-top: 2rem;
+        transition: 1s;
+
+        &:hover {
+          box-shadow: 0px 0px 12px 1px #0EE7B7;
+          -webkit-box-shadow: 0px 0px 12px 1px #0EE7B7;
+        }
+
+        a {
+          text-transform: uppercase;
+          color: ${props => props.theme.colors.white};
+          font-size: 1.5rem;
+          font-weight: 300;
+          display: flex;
+          align-items: center;
+
+          svg.github {
+            margin-right: .5rem;
+          }
+
+          svg.sites {
+            margin-left: .5rem;
+            color: ${props => props.theme.colors.primary};
+          }
+        }
+      }
+
+      button + button {
+        margin-left: 1rem;
+      }
+
+      @media screen and (max-width: 1000px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        button + button {
+          margin-left: 0;
+          margin-top: 1rem;
+        }
+      }
+
+      @media screen and (max-width: 700px){
+        button {
+          width: 19rem;
+          padding: .7rem 2rem;
+
+          a {
+            font-size: .9rem;
           }
         }
       }
