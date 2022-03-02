@@ -21,7 +21,8 @@ export function Footer() {
         <button onClick={handleScrollTop}>Voltar ao topo</button>
 
         <section>
-          <a 
+          <a
+            data-testid='email'
             href="mailto:wesley_wisch@hotmail.com"
             target='_blank'
             rel="noreferrer"
@@ -31,7 +32,8 @@ export function Footer() {
             />
           </a>
 
-          <a 
+          <a
+            data-testid='github'
             href="https://github.com/wesleywisch"
             target='_blank'
             rel="noreferrer"
@@ -41,7 +43,8 @@ export function Footer() {
             />
           </a>
 
-          <a 
+          <a
+            data-testid='linkedim'
             href="https://www.linkedin.com/in/wesley-wisch/"
             target='_blank'
             rel="noreferrer"

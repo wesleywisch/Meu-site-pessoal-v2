@@ -86,7 +86,7 @@ export function VisualizationOfAProject() {
           />
 
           {visualizationProject.createdAt && (
-            <div className="date">
+            <div data-aos="fade-right" className="date">
               <p>
                 {new Date(visualizationProject.createdAt).toLocaleDateString()}
                 {visualizationProject.updateAt && ` | Atualizada em ${new Date(visualizationProject.updateAt).toLocaleDateString()}`}
@@ -95,13 +95,13 @@ export function VisualizationOfAProject() {
           )}
 
           <section className='content'>
-            <h2>Descrição:</h2>
+            <h2 data-aos="fade-right">Descrição:</h2>
 
-            <p>{visualizationProject.description}</p>
+            <p data-aos="zoom-in">{visualizationProject.description}</p>
 
             {visualizationProject.techs && (
               <section className="tech">
-                <h2>Tecnologias utilizadas: </h2>
+                <h2 data-aos="fade-right">Tecnologias utilizadas: </h2>
 
                 <ul>
                   {visualizationProject.techs.map((tech, key) => {
@@ -112,7 +112,7 @@ export function VisualizationOfAProject() {
                     const { text } = tech as teste;
 
                     return (
-                      <li key={key}>
+                      <li key={key} data-aos="zoom-in">
                         {text}
                       </li>
                     )
