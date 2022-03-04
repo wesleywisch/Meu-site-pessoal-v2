@@ -56,12 +56,10 @@ export function VisualizationOfAProject() {
         }
 
         setVisualizationProject(VisualizationProject);
+        setLoading(false);
       }
       catch (err) {
         toast.warn('Não foi possível carregar as informações. Tente novamente');
-      }
-      finally {
-        setLoading(false);
       }
     }
 
@@ -76,7 +74,7 @@ export function VisualizationOfAProject() {
     <VisualizationOfAProjectContainer>
       {loading === true ? (
         <div className='carrying'>
-          <p><LoadingScreen /> Carregando...</p>
+          <LoadingScreen /> <p>Carregando...</p>
         </div>
       ) : (
         <>

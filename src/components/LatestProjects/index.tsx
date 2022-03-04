@@ -27,7 +27,7 @@ export function LatestProjects({ latestProjects }: LatestProjectsProps) {
       <section>
         {latestProjects.length === 0 && (
           <div className='carrying'>
-            <p><LoadingScreen /> Carregando...</p>
+            <LoadingScreen /> <p>Carregando...</p>
           </div>
         )}
 
