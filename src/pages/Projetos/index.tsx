@@ -19,7 +19,7 @@ type getProjectsApiPrismicProps = {
 
 export function Projetos() {
   const [projects, setProjects] = useState<getProjectsApiPrismicProps[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const prismic = getPrismicClient();
 
@@ -40,12 +40,10 @@ export function Projetos() {
         }));
 
         setProjects(projectFormated);
+        setLoading(false);
       }
       catch (err) {
         toast.warn('Não foi possível carregar as informações. Tente novamente');
-      }
-      finally {
-        setLoading(false);
       }
     }
 
@@ -56,7 +54,7 @@ export function Projetos() {
     <ProjetosContainer>
       {loading && (
         <div className='carrying'>
-          <p><LoadingScreen /> Carregando...</p>
+          <LoadingScreen /> <p>Carregando...</p>
         </div>
       )}
 
