@@ -49,6 +49,6 @@ describe('HomeHero component', () => {
     expect(screen.getByText('Função:')).toBeInTheDocument();
     expect(screen.getByText('Desenvolvedor Front-End Júnior,')).toBeInTheDocument();
     expect(screen.getByText('Empresa:')).toBeInTheDocument();
-    expect(screen.getByText('Buscando a minha primeira oportunidade.')).toBeInTheDocument();
+    expect(screen.getByText('Astrolinks.')).toBeInTheDocument();
   })
 })
