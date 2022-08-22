@@ -32,7 +32,7 @@ export function HomeHero() {
               Função: <span className='blue'>Desenvolvedor Front-End Júnior,</span>
             </div>
             <div>
-              Empresa: <span className='blue'>Astrolinks.</span>
+              Empresa: <span className='blue'>Buscando uma nova oportunidade.</span>
             </div>
             {'\u007D'}
           </CodeItem>
