@@ -1,5 +1,5 @@
-import { useLocation } from 'react-router-dom'
-import { Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { NavLinkContainer } from './styles';
 
@@ -11,7 +11,7 @@ type NavLinkProps = {
 }
 
 export function NavLink({ title, path, toggle, includes = false }: NavLinkProps) {
-  const location = useLocation();
+  const location = useRouter();
 
   function verifyIfActive() {
     if (includes) {
@@ -25,7 +25,7 @@ export function NavLink({ title, path, toggle, includes = false }: NavLinkProps)
 
   return (
     <NavLinkContainer isActive={isActive} onClick={toggle}>
-      <Link to={path}>{title}</Link>
+      <Link href={path}>{title}</Link>
     </NavLinkContainer>
   );
 }

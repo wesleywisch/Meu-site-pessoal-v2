@@ -29,29 +29,29 @@ export function Home() {
     Aos.init({ duration: 1500 });
   }, [])
 
-  useEffect(() => {
-    async function getProjectsApiPrismic() {
-      try {
-        const projectResponse = await client.get({
-          predicates: prismic.predicate.at('document.type', 'projeto')
-        });
+  // useEffect(() => {
+  //   async function getProjectsApiPrismic() {
+  //     try {
+  //       const projectResponse = await client.get({
+  //         predicates: prismic.predicate.at('document.type', 'projeto')
+  //       });
 
-        const latestProjectFormated = projectResponse.results.map(project => ({
-          slug: project.uid as string,
-          title: project.data.title as string,
-          type: project.data.type as string,
-          thumbnail: project.data.thumbnail.url as string,
-        }));
+  //       const latestProjectFormated = projectResponse.results.map(project => ({
+  //         slug: project.uid as string,
+  //         title: project.data.title as string,
+  //         type: project.data.type as string,
+  //         thumbnail: project.data.thumbnail.url as string,
+  //       }));
 
-        setLatestProjects(latestProjectFormated);
-      }
-      catch (err) {
-        toast.warn('Não foi possível carregar as informações do últimos projetos. Tente novamente');
-      }
-    }
+  //       setLatestProjects(latestProjectFormated);
+  //     }
+  //     catch (err) {
+  //       toast.warn('Não foi possível carregar as informações do últimos projetos. Tente novamente');
+  //     }
+  //   }
 
-    getProjectsApiPrismic();
-  }, []);
+  //   getProjectsApiPrismic();
+  // }, []);
 
   return (
     <>

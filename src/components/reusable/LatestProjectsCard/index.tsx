@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { AiOutlineRightCircle } from 'react-icons/ai';
 
@@ -24,7 +24,7 @@ export function LatestProjectsCard({ title, type, slug, img }: LatestProjectsCar
       </section>
 
       <button type='button'>
-        <Link to={`/projetos/${slug}`}>
+        <Link href={`/projetos/${slug}`}>
           Ver mais <AiOutlineRightCircle />
         </Link>
       </button>

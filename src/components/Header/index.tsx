@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { FaBars } from 'react-icons/fa';
 
@@ -14,7 +14,7 @@ export function Header({ toggle }: HeaderProps) {
   return (
     <HeaderContainer>
       <HeaderName>
-        <Link to='/'>
+        <Link href='/'>
           <h1>Wesley Wisch</h1>
         </Link>
       </HeaderName>

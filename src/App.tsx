@@ -13,8 +13,8 @@ import { Header } from './components/Header';
 import { NotFound } from './components/NotFound';
 
 import { Home } from './pages/Home';
-import { Projetos } from './pages/Projetos';
-import { VisualizationOfAProject } from './pages/VisualizationOfAProject';
+import { Projetos } from './pages/projetos';
+import { VisualizationOfAProject } from './pages/visualizationOfAProject';
 
 export function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,12 +30,12 @@ export function App() {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Header toggle={toggle} />
 
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/projetos' element={<Projetos />} />
         <Route path='/projetos/:slugParams' element={<VisualizationOfAProject />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
+      </Routes> */}
     </ThemeProvider>
   );
 };

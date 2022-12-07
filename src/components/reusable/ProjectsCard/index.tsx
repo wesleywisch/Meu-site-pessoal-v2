@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { ProjectsCardContainer } from './styles';
 
@@ -12,7 +12,7 @@ type ProjectsCardProps = {
 export function ProjectsCard({ title, type, imgUrl, slug }: ProjectsCardProps) {
   return (
     <ProjectsCardContainer imgUrl={imgUrl} data-aos="zoom-in" data-testid='url'>
-      <Link data-testid='linkProject' to={`/projetos/${slug}`}>
+      <Link data-testid='linkProject' href={`/projetos/${slug}`}>
         <div className='overlay'></div>
 
         <section>

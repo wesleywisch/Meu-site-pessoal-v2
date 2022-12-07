@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { LoadingScreen } from '../LoadingScreen';
 import { LatestProjectsCard } from '../reusable/LatestProjectsCard';
@@ -43,7 +43,7 @@ export function LatestProjects({ latestProjects }: LatestProjectsProps) {
       </section>
 
       <button type='button'>
-        <Link to='/projetos'>
+        <Link href='/projetos'>
           Ver todos os projetos
         </Link>
       </button>

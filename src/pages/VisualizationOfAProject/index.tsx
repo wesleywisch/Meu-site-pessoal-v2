@@ -32,37 +32,37 @@ export function VisualizationOfAProject() {
   const [loading, setLoading] = useState(false);
   const [visualizationProject, setVisualizationProject] = useState({} as getVisualizationProjectProps);
 
-  const { slugParams } = useParams();
+  // const { slugParams } = useParams();
 
-  useEffect(() => {
-    async function getProjectsApiPrismic() {
-      try {
-        setLoading(true);
-        const visualizationProjectResponse = await client.getByUID('projeto', String(slugParams), {});
+  // useEffect(() => {
+  //   async function getProjectsApiPrismic() {
+  //     try {
+  //       setLoading(true);
+  //       const visualizationProjectResponse = await client.getByUID('projeto', String(slugParams), {});
 
-        const VisualizationProject = {
-          slug: visualizationProjectResponse.uid as string,
-          title: visualizationProjectResponse.data.title as string,
-          type: visualizationProjectResponse.data.type as string,
-          description: visualizationProjectResponse.data.description as string,
-          projetoGithub: visualizationProjectResponse.data.linkgithub.url as string,
-          projetoOnline: visualizationProjectResponse.data.linkonline.url as string,
-          techs: visualizationProjectResponse.data.techs,
-          thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
-          createdAt: visualizationProjectResponse.data.createdat as string,
-          updateAt: visualizationProjectResponse.data.updateat as string,
-        }
+  //       const VisualizationProject = {
+  //         slug: visualizationProjectResponse.uid as string,
+  //         title: visualizationProjectResponse.data.title as string,
+  //         type: visualizationProjectResponse.data.type as string,
+  //         description: visualizationProjectResponse.data.description as string,
+  //         projetoGithub: visualizationProjectResponse.data.linkgithub.url as string,
+  //         projetoOnline: visualizationProjectResponse.data.linkonline.url as string,
+  //         techs: visualizationProjectResponse.data.techs,
+  //         thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
+  //         createdAt: visualizationProjectResponse.data.createdat as string,
+  //         updateAt: visualizationProjectResponse.data.updateat as string,
+  //       }
 
-        setVisualizationProject(VisualizationProject);
-        setLoading(false);
-      }
-      catch (err) {
-        toast.warn('Não foi possível carregar as informações. Tente novamente');
-      }
-    }
+  //       setVisualizationProject(VisualizationProject);
+  //       setLoading(false);
+  //     }
+  //     catch (err) {
+  //       toast.warn('Não foi possível carregar as informações. Tente novamente');
+  //     }
+  //   }
 
-    getProjectsApiPrismic();
-  }, []);
+  //   getProjectsApiPrismic();
+  // }, []);
 
   function handleOpenLink(link?: string) {
     window.open(link);
