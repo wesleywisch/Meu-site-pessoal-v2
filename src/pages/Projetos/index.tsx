@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import Prismic from '@prismicio/client';
+import * as prismic from '@prismicio/client';
 import { toast } from 'react-toastify';
 
-import { getPrismicClient } from '../../services/prismic';
+import { client } from '../../services/prismic';
 
 import { ProjectsCard } from '../../components/reusable/ProjectsCard';
 import { LoadingScreen } from '../../components/LoadingScreen';
@@ -21,16 +21,14 @@ export function Projetos() {
   const [projects, setProjects] = useState<getProjectsApiPrismicProps[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const prismic = getPrismicClient();
-
   useEffect(() => {
     async function getProjectsApiPrismic() {
       try {
         setLoading(true);
-        const projectResponse = await prismic.query(
-          [Prismic.Predicates.at('document.type', 'projeto')],
-          { orderings: '[document.first_publication_date desc]' },
-        );
+        const projectResponse = await client.get({
+          predicates: prismic.predicate.at('document.type', 'projeto'),
+          orderings: ['document.first_publication_date desc'],
+        })
 
         const projectFormated = projectResponse.results.map(project => ({
           slug: project.uid as string,

@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import * as prismic from '@prismicio/client';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
-import Prismic from '@prismicio/client';
 
-import { getPrismicClient } from '../../services/prismic';
+import { client } from '../../services/prismic';
 
 import { HomeHero } from '../../components/HomeHero';
 import { Experience } from '../../components/Experience';
@@ -25,8 +25,6 @@ type getLatestProjectsApiPrismicProps = {
 export function Home() {
   const [latestProjects, setLatestProjects] = useState<getLatestProjectsApiPrismicProps[]>([]);
 
-  const prismic = getPrismicClient();
-
   useEffect(() => {
     Aos.init({ duration: 1500 });
   }, [])
@@ -34,10 +32,9 @@ export function Home() {
   useEffect(() => {
     async function getProjectsApiPrismic() {
       try {
-        const projectResponse = await prismic.query(
-          [Prismic.Predicates.at('document.type', 'projeto')],
-          { orderings: '[document.first_publication_date desc]' },
-        );
+        const projectResponse = await client.get({
+          predicates: prismic.predicate.at('document.type', 'projeto')
+        });
 
         const latestProjectFormated = projectResponse.results.map(project => ({
           slug: project.uid as string,

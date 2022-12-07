@@ -6,7 +6,7 @@ import { AiOutlineGithub } from 'react-icons/ai';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
-import { getPrismicClient } from '../../services/prismic';
+import { client } from '../../services/prismic';
 
 import { BannerProject } from '../../components/reusable/BannerProject';
 import { LoadingScreen } from '../../components/LoadingScreen';
@@ -34,13 +34,11 @@ export function VisualizationOfAProject() {
 
   const { slugParams } = useParams();
 
-  const prismic = getPrismicClient();
-
   useEffect(() => {
     async function getProjectsApiPrismic() {
       try {
         setLoading(true);
-        const visualizationProjectResponse = await prismic.getByUID('projeto', String(slugParams), {});
+        const visualizationProjectResponse = await client.getByUID('projeto', String(slugParams), {});
 
         const VisualizationProject = {
           slug: visualizationProjectResponse.uid as string,

@@ -1,11 +1,8 @@
-import Prismic from '@prismicio/client';
-import { DefaultClient } from '@prismicio/client/types/client';
+import * as prismic from '@prismicio/client';
 
-export function getPrismicClient(req?: unknown): DefaultClient {
-  const prismic = Prismic.client(process.env.REACT_APP_PRISMIC_API_ENDPOINT as string, {
-    req,
-    accessToken: process.env.REACT_APP_PRISMIC_ACCESS_TOKEN as string
-  })
+const endpoint = prismic.getEndpoint('my-portfolio-wesley');
 
-  return prismic;
-}
+export const client = prismic.createClient(endpoint, {
+  fetch: fetch,
+  accessToken: process.env.REACT_APP_PRISMIC_ACCESS_TOKEN as string,
+});
