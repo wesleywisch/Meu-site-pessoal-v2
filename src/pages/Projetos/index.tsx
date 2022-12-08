@@ -21,32 +21,32 @@ export default function Projetos() {
   const [projects, setProjects] = useState<getProjectsApiPrismicProps[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   async function getProjectsApiPrismic() {
-  //     try {
-  //       setLoading(true);
-  //       const projectResponse = await client.get({
-  //         predicates: prismic.predicate.at('document.type', 'projeto'),
-  //         orderings: ['document.first_publication_date desc'],
-  //       })
+  useEffect(() => {
+    async function getProjectsApiPrismic() {
+      try {
+        setLoading(true);
+        const projectResponse = await client.get({
+          predicates: prismic.predicate.at('document.type', 'projeto'),
+          orderings: ['document.first_publication_date desc'],
+        })
 
-  //       const projectFormated = projectResponse.results.map(project => ({
-  //         slug: project.uid as string,
-  //         title: project.data.title as string,
-  //         type: project.data.type as string,
-  //         thumbnail: project.data.thumbnail.url as string,
-  //       }));
+        const projectFormated = projectResponse.results.map(project => ({
+          slug: project.uid as string,
+          title: project.data.title as string,
+          type: project.data.type as string,
+          thumbnail: project.data.thumbnail.url as string,
+        }));
 
-  //       setProjects(projectFormated);
-  //       setLoading(false);
-  //     }
-  //     catch (err) {
-  //       toast.warn('Não foi possível carregar as informações. Tente novamente');
-  //     }
-  //   }
+        setProjects(projectFormated);
+        setLoading(false);
+      }
+      catch (err) {
+        toast.warn('Não foi possível carregar as informações. Tente novamente');
+      }
+    }
 
-  //   getProjectsApiPrismic();
-  // }, []);
+    getProjectsApiPrismic();
+  }, []);
 
   return (
     <ProjetosContainer>

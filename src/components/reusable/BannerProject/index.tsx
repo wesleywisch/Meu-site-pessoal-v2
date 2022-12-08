@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { BannerProjectContainer } from './styles';
 
 type BannerProjectProps = {
@@ -9,13 +9,13 @@ type BannerProjectProps = {
 }
 
 export function BannerProject({ title, type, imgUrl, arrowLeft }: BannerProjectProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   function handleBack() {
-    navigate('/projetos')
+    router.back()
   }
 
-  return(
+  return (
     <BannerProjectContainer imgUrl={imgUrl}>
       <div className="overlay"></div>
 

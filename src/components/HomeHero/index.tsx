@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Profile from '../../assets/profile.jpg';
 
 import { HomeHeroContainer, TextContainer, InfosContainer, CodeItem } from './styles'
@@ -5,7 +6,7 @@ import { HomeHeroContainer, TextContainer, InfosContainer, CodeItem } from './st
 export function HomeHero() {
   return (
     <HomeHeroContainer data-aos="fade-up">
-      <img src={Profile} alt="Foto de perfil" />
+      <Image src={Profile} alt="Foto de perfil" className='img' />
 
       <div>
         <TextContainer>

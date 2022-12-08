@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HomeHeroContainer = styled.section`
   width: 100%;
@@ -8,10 +8,11 @@ export const HomeHeroContainer = styled.section`
   align-items: center;
   margin-top: 5rem;
 
-  > img {
+  > .img {
     width: 25rem;
+    height: 25rem;
     border-radius: 50%;
-    border: solid .2rem #0D1117;
+    border: solid 0.2rem #0d1117;
     flex: 1;
   }
 
@@ -25,7 +26,7 @@ export const HomeHeroContainer = styled.section`
       flex: 1;
     }
 
-    img {
+    .img {
       flex: 0.5;
     }
   }
@@ -34,9 +35,10 @@ export const HomeHeroContainer = styled.section`
     > div {
       margin-left: 0;
     }
-    
-    > img {
+
+    > .img {
       width: 22rem;
+      height: 22rem;
     }
   }
 
@@ -53,29 +55,29 @@ export const TextContainer = styled.section`
   width: 100%;
   margin-bottom: 2rem;
 
-  h3{
+  h3 {
     font-size: 6rem;
-    color: ${props => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.primary};
   }
 
-  h4{
+  h4 {
     font-size: 2rem;
     font-weight: 400;
-    color: ${props => props.theme.colors.secondary};
+    color: ${(props) => props.theme.colors.secondary};
   }
 
   @media screen and (max-width: 1450px) {
-    h3{
+    h3 {
       font-size: 5rem;
     }
   }
 
   @media screen and (max-width: 1000px) {
-    h3{
+    h3 {
       font-size: 3rem;
     }
 
-    h4{
+    h4 {
       font-size: 1.5rem;
     }
   }
@@ -97,21 +99,21 @@ export const InfosContainer = styled.section`
 `;
 
 export const CodeItem = styled.div`
-  background: ${props => props.theme.colors.gradient};
+  background: ${(props) => props.theme.colors.gradient};
   padding: 2rem;
   font-family: monospace;
   font-weight: 300;
-  color: ${props => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
   width: 32rem;
   align-self: flex-start;
   transition: 1s !important;
   font-size: 1.2rem;
 
-  &:hover{
+  &:hover {
     filter: brightness(1.2);
   }
 
-  &:last-child{
+  &:last-child {
     align-self: flex-end;
   }
 
@@ -120,16 +122,16 @@ export const CodeItem = styled.div`
     margin-left: 1rem;
   }
 
-  span.purple{
+  span.purple {
     color: #c38cdd;
   }
 
-  span.blue{
+  span.blue {
     color: #7ac7e3;
   }
 
-  span.comment{
-    color: ${props => props.theme.colors.text};
+  span.comment {
+    color: ${(props) => props.theme.colors.text};
     margin-bottom: 1rem;
     display: block;
   }
@@ -149,6 +151,6 @@ export const CodeItem = styled.div`
   }
 
   @media screen and (max-width: 360px) {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 `;

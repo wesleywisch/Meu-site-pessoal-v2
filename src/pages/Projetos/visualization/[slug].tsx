@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 
-import { client } from '../../services/prismic';
+import { client } from '../../../services/prismic';
 
-import { BannerProject } from '../../components/reusable/BannerProject';
-import { LoadingScreen } from '../../components/LoadingScreen';
+import { BannerProject } from '../../../components/reusable/BannerProject';
+import { LoadingScreen } from '../../../components/LoadingScreen';
 
 import { VisualizationOfAProjectContainer } from './styles';
+import { useRouter } from 'next/router';
 
 type getVisualizationProjectProps = {
   slug: string;
@@ -28,41 +28,41 @@ type getVisualizationProjectProps = {
   updateAt: string;
 }
 
-export function VisualizationOfAProject() {
+export default function VisualizationOfAProject() {
   const [loading, setLoading] = useState(false);
   const [visualizationProject, setVisualizationProject] = useState({} as getVisualizationProjectProps);
 
-  // const { slugParams } = useParams();
+  const { query } = useRouter();
 
-  // useEffect(() => {
-  //   async function getProjectsApiPrismic() {
-  //     try {
-  //       setLoading(true);
-  //       const visualizationProjectResponse = await client.getByUID('projeto', String(slugParams), {});
+  useEffect(() => {
+    async function getProjectsApiPrismic() {
+      try {
+        setLoading(true);
+        const visualizationProjectResponse = await client.getByUID('projeto', String(query.slug), {});
 
-  //       const VisualizationProject = {
-  //         slug: visualizationProjectResponse.uid as string,
-  //         title: visualizationProjectResponse.data.title as string,
-  //         type: visualizationProjectResponse.data.type as string,
-  //         description: visualizationProjectResponse.data.description as string,
-  //         projetoGithub: visualizationProjectResponse.data.linkgithub.url as string,
-  //         projetoOnline: visualizationProjectResponse.data.linkonline.url as string,
-  //         techs: visualizationProjectResponse.data.techs,
-  //         thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
-  //         createdAt: visualizationProjectResponse.data.createdat as string,
-  //         updateAt: visualizationProjectResponse.data.updateat as string,
-  //       }
+        const VisualizationProject = {
+          slug: visualizationProjectResponse.uid as string,
+          title: visualizationProjectResponse.data.title as string,
+          type: visualizationProjectResponse.data.type as string,
+          description: visualizationProjectResponse.data.description as string,
+          projetoGithub: visualizationProjectResponse.data.linkgithub.url as string,
+          projetoOnline: visualizationProjectResponse.data.linkonline.url as string,
+          techs: visualizationProjectResponse.data.techs,
+          thumbnail: visualizationProjectResponse.data.thumbnail.url as string,
+          createdAt: visualizationProjectResponse.data.createdat as string,
+          updateAt: visualizationProjectResponse.data.updateat as string,
+        }
 
-  //       setVisualizationProject(VisualizationProject);
-  //       setLoading(false);
-  //     }
-  //     catch (err) {
-  //       toast.warn('Não foi possível carregar as informações. Tente novamente');
-  //     }
-  //   }
+        setVisualizationProject(VisualizationProject);
+        setLoading(false);
+      }
+      catch (err) {
+        toast.warn('Não foi possível carregar as informações. Tente novamente');
+      }
+    }
 
-  //   getProjectsApiPrismic();
-  // }, []);
+    getProjectsApiPrismic();
+  }, []);
 
   function handleOpenLink(link?: string) {
     window.open(link);
