@@ -13,9 +13,9 @@ const banner = {
   arrowLeft: 'arrow',
 };
 
-jest.mock('react-router-dom', () => {
+jest.mock('next/router', () => {
   return {
-    useNavigate() {
+    useRouter() {
       return '/projetos';
     }
   }

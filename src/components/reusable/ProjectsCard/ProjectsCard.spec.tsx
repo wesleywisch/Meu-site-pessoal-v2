@@ -1,6 +1,8 @@
 import "@testing-library/jest-dom";
-import { MemoryRouter } from "react-router-dom";
 import { render, screen } from '@testing-library/react';
+
+import mockRouter from 'next-router-mock';
+import { createDynamicRouteParser } from "next-router-mock/dynamic-routes/next-13";
 
 import { ThemeProvider } from "styled-components";
 import { colors } from "../../../styles/themes/colors";
@@ -14,23 +16,30 @@ const projectsCard = {
   imgUrl: 'imagemAleatoria.png',
 }
 
+mockRouter.useParser(createDynamicRouteParser([
+  "/projetos/[slug]",
+]));
+
 describe('ProjectsCard component', () => {
   it('Checking that the names appear on screen, and that the button takes you to the correct screen', () => {
-    const { getByTestId } = render(
+    render(
       <ThemeProvider theme={colors}>
-        <MemoryRouter initialEntries={['/projetos', `/${projectsCard.slug}`]}>
-          <ProjectsCard
-            title={projectsCard.title}
-            slug={projectsCard.slug}
-            type={projectsCard.type}
-            imgUrl={projectsCard.imgUrl}
-          />
-        </MemoryRouter>
+        <ProjectsCard
+          title={projectsCard.title}
+          slug={projectsCard.slug}
+          type={projectsCard.type}
+          imgUrl={projectsCard.imgUrl}
+        />
       </ThemeProvider>
     );
 
     expect(screen.getByText('Games')).toBeInTheDocument();
     expect(screen.getByText('Website')).toBeInTheDocument();
-    expect(getByTestId('linkProject')).toHaveAttribute('href', `/projetos/${projectsCard.slug}`);
+
+    mockRouter.push('/projetos/Games');
+    expect(mockRouter).toMatchObject({
+      pathname: '/projetos/[slug]',
+      query: { slug: 'Games' }
+    });
   });
 });

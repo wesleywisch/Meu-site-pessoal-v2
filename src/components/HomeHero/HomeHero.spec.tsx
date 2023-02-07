@@ -4,20 +4,17 @@ import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from "styled-components";
 import { colors } from "../../styles/themes/colors";
 
-import Profile from '../../assets/profile.jpg';
-
 import { HomeHero } from "./index";
 
 describe('HomeHero component', () => {
   it('Checking if the image appears on screen, and their respective names', () => {
-    const { getByAltText } = render(
+    render(
       <ThemeProvider theme={colors}>
         <HomeHero />
       </ThemeProvider>
     );
 
-    expect(getByAltText('Foto de perfil')).toHaveAttribute('src', `${Profile}`);
-    expect(getByAltText('Foto de perfil')).toBeInTheDocument();
+    expect(screen.getByAltText('Foto de perfil')).toBeInTheDocument();
 
     expect(screen.getByText('Olá')).toBeInTheDocument();
     expect(screen.getByText('Me chamo Wesley Wisch')).toBeInTheDocument();

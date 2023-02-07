@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import { NotFoundContainer } from './styles';
 
@@ -10,7 +10,7 @@ export function NotFound() {
       <p>Não encontramos a página que você queria.</p>
 
       <button>
-        <Link to='/'>Início</Link>
+        <Link href='/'>Início</Link>
       </button>
     </NotFoundContainer>
   )

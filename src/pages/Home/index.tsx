@@ -22,7 +22,7 @@ type getLatestProjectsApiPrismicProps = {
   thumbnail: string;
 }
 
-export function Home() {
+export default function Home() {
   const [latestProjects, setLatestProjects] = useState<getLatestProjectsApiPrismicProps[]>([]);
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function Home() {
 
   return (
     <>
-      <HomeContainer>
+      <HomeContainer data-testid='container' className='home'>
         <div>
           <HomeHero />
           <Experience />

@@ -1,6 +1,8 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from '@testing-library/react';
-import { MemoryRouter } from "react-router-dom";
+
+import mockRouter from 'next-router-mock';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider/next-13';
 
 import { ThemeProvider } from "styled-components";
 import { colors } from "../../styles/themes/colors";
@@ -11,15 +13,19 @@ describe('NavLink component', () => {
   it('Checking if the names are on screen and if they have their respective attributes', () => {
     render(
       <ThemeProvider theme={colors}>
-        <MemoryRouter initialEntries={['/', '/projetos']}>
-          <NavLink title="Home" path="/" />
-          <NavLink title="Projetos" path="/projetos" />
-        </MemoryRouter>
-      </ThemeProvider>
+        <NavLink title="Home" path="/" />
+        <NavLink title="Projetos" path="/projetos" />
+      </ThemeProvider>,
+      { wrapper: MemoryRouterProvider }
     );
 
-    expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/');
-    expect(screen.getByText('Projetos').closest('a')).toHaveAttribute('href', '/projetos');
+    fireEvent.click(screen.getByText('Home'));
+    expect(mockRouter.asPath).toEqual('/')
+
+    fireEvent.click(screen.getByText('Projetos'));
+    expect(mockRouter.asPath).toEqual('/projetos')
+
+
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Projetos')).toBeInTheDocument();
   });
@@ -27,23 +33,22 @@ describe('NavLink component', () => {
   it('Checking if when the link is active it changes the class', () => {
     render(
       <ThemeProvider theme={colors}>
-        <MemoryRouter initialEntries={['/', '/projetos']}>
-          <NavLink title="Home" path="/" />
-          <NavLink title="Projetos" path="/projetos" includes />
-        </MemoryRouter>
-      </ThemeProvider>
+        <NavLink title="Home" path="/" />
+        <NavLink title="Projetos" path="/projetos" includes />
+      </ThemeProvider>,
+      { wrapper: MemoryRouterProvider }
     );
 
-    expect(screen.getByText('Home').closest('li')).toHaveClass('feKcvd');
+    const link = screen.getByTestId('linkHome');
+    const project = screen.getByTestId('linkProject');
 
-    expect(screen.getByText('Projetos').closest('li')).toHaveClass('kIGwpi');
+    expect(link).toHaveClass('sc-eDvSVe JVAjX')
+    expect(project).toHaveClass('sc-eDvSVe hzdFiM')
 
     fireEvent.click(screen.getByText('Home'));
-    
-    expect(screen.getByText('Home').closest('li')).toHaveClass('kIGwpi');
+    expect(link).toHaveClass('sc-eDvSVe hzdFiM')
 
     fireEvent.click(screen.getByText('Projetos'));
-
-    expect(screen.getByText('Projetos').closest('li')).toHaveClass('kIGwpi');
+    expect(project).toHaveClass('sc-eDvSVe hzdFiM')
   })
 });

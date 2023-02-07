@@ -24,7 +24,11 @@ export function NavLink({ title, path, toggle, includes = false }: NavLinkProps)
   const isActive = verifyIfActive();
 
   return (
-    <NavLinkContainer isActive={isActive} onClick={toggle}>
+    <NavLinkContainer
+      data-testid={`${title === 'Home' ? 'linkHome' : 'linkProject'}`}
+      isActive={isActive}
+      onClick={toggle}
+    >
       <Link href={path}>{title}</Link>
     </NavLinkContainer>
   );

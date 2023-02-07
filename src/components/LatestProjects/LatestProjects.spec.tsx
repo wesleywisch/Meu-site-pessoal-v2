@@ -1,7 +1,8 @@
 import "@testing-library/jest-dom";
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
-import { MemoryRouter } from "react-router-dom";
+import mockRouter from 'next-router-mock';
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider/next-13';
 
 import { ThemeProvider } from "styled-components";
 import { colors } from "../../styles/themes/colors";
@@ -10,28 +11,27 @@ import { LatestProjects } from "./index";
 
 describe('LatestProjects component', () => {
   it('Checking if the section title appears on screen and if the loading also appears on screen', () => {
-    const { getByText } = render(
-      <MemoryRouter initialEntries={['/']}>
-        <ThemeProvider theme={colors}>
-          <LatestProjects latestProjects={[]} />
-        </ThemeProvider>
-      </MemoryRouter>
+    render(
+      <ThemeProvider theme={colors}>
+        <LatestProjects latestProjects={[]} />
+      </ThemeProvider>,
+      { wrapper: MemoryRouterProvider }
     );
 
     expect(screen.getByText('#Últimos projetos')).toBeInTheDocument();
     expect(screen.getByText('Carregando...')).toBeInTheDocument();
-    expect(getByText('Carregando...')).toBeInTheDocument();
+    expect(screen.getByText('Carregando...')).toBeInTheDocument();
   });
 
   it('Checking if the button takes you to the other screen', () => {
     render(
-      <MemoryRouter initialEntries={['/projetos']}>
-        <ThemeProvider theme={colors}>
-          <LatestProjects latestProjects={[]} />
-        </ThemeProvider>
-      </MemoryRouter>
+      <ThemeProvider theme={colors}>
+        <LatestProjects latestProjects={[]} />
+      </ThemeProvider>,
+      { wrapper: MemoryRouterProvider }
     );
 
-    expect(screen.getByText('Ver todos os projetos')).toHaveAttribute('href', '/projetos');
+    fireEvent.click(screen.getByText('Ver todos os projetos'));
+    expect(mockRouter.asPath).toEqual('/projetos')
   })
 });

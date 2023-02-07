@@ -49,7 +49,7 @@ export default function Projetos() {
   }, []);
 
   return (
-    <ProjetosContainer>
+    <ProjetosContainer data-testid="container" className='projects'>
       {loading && (
         <div className='carrying'>
           <LoadingScreen /> <p>Carregando...</p>
