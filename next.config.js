@@ -6,6 +6,7 @@ const nextConfig = {
     'api.ts',
     'api.tsx',
   ],
+  distDir: 'build'
 }
 
 module.exports = nextConfig
