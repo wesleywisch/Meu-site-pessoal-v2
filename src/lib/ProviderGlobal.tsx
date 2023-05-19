@@ -1,33 +1,32 @@
-import { AppProps } from 'next/app';
-import { useState } from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
+'use client';
 
-import { ToastContainer } from 'react-toastify';
+import { useState, ReactNode } from 'react';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import { Sidebar } from '../components/Sidebar';
 import { Header } from '../components/Header';
 
-import 'react-toastify/dist/ReactToastify.css';
-
 import { GlobalStyle } from '../styles/global';
 import { colors } from '../styles/themes/colors';
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function StyledComponentsRegistry({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggle() {
     setIsOpen(!isOpen);
   }
 
+
   return (
     <ThemeProvider theme={colors as DefaultTheme}>
       <GlobalStyle />
-      <ToastContainer />
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Header toggle={toggle} />
-      <Component {...pageProps} />
+      {children}
     </ThemeProvider>
-  )
+  );
 }
-
-export default MyApp

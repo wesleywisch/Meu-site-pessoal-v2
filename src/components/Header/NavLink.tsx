@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 import { NavLinkContainer } from './styles';
@@ -11,14 +11,14 @@ type NavLinkProps = {
 }
 
 export function NavLink({ title, path, toggle, includes = false }: NavLinkProps) {
-  const location = useRouter();
+  const location = usePathname();
 
   function verifyIfActive() {
     if (includes) {
-      return location.pathname.includes(path);
+      return location.includes(path);
     }
 
-    return path === location.pathname;
+    return path === location;
   }
 
   const isActive = verifyIfActive();

@@ -7,6 +7,7 @@
 .swc
 .env
 .next
+.vscode
 
 # testing
 /coverage
