@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@prisma/client": "^4.14.1",
     "aos": "^2.3.4",
-    "next": "^13.0.6",
+    "axios": "^1.4.0",
+    "next": "^13.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
     "react-scripts": "5.0.1",
     "sharp": "^0.32.1",
     "styled-components": "^6.0.0-rc.1",
-    "web-vitals": "^3.1.0"
+    "web-vitals": "^3.1.0",
+    "zod": "^3.21.4"
   },
   "scripts": {
     "dev": "next dev",
@@ -55,6 +58,7 @@
     "jest": "29.5.0",
     "jest-environment-jsdom": "^29.4.1",
     "next-router-mock": "^0.9.1",
+    "prisma": "^4.14.1",
     "ts-node": "^10.5.0",
     "typescript": "^5.0.4",
     "whatwg-fetch": "^3.6.2"

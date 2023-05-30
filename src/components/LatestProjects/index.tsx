@@ -4,17 +4,12 @@ import { LoadingScreen } from '../LoadingScreen';
 import { LatestProjectsCard } from '../reusable/LatestProjectsCard';
 import { SectionTitle } from '../reusable/SectionTitle';
 
+import { ProjectType } from '../../types/ProjectType';
+
 import { LatestProjectsContainer } from './styles';
 
-type getLatestProjectsApiPrismicProps = {
-  slug: string;
-  title: string;
-  type: string;
-  thumbnail: string;
-}
-
 type LatestProjectsProps = {
-  latestProjects: getLatestProjectsApiPrismicProps[];
+  latestProjects: ProjectType[];
 }
 
 export function LatestProjects({ latestProjects }: LatestProjectsProps) {

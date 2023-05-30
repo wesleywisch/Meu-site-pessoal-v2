@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Techs {
+  id   String @unique @default(uuid())
+  name String
+
+  projects ProjectsTechs[]
+
+  @@map("techs")
+}
+
+model ProjectsTechs {
+  id          String   @unique @default(uuid())
+  tech        Techs    @relation(fields: [techs_id], references: [id])
+  project     Projects @relation(fields: [projects_id], references: [id])
+  techs_id    String
+  projects_id String
+}
+
+model Projects {
+  id            String          @unique @default(uuid())
+  slug          String
+  title         String
+  type          String
+  description   String
+  projectGithub String?
+  projectOnline String?
+  thumbnail     String
+  createdAt     DateTime        @default(now())
+  updateAt      DateTime
+  techs         ProjectsTechs[]
+
+  @@map("projects")
+}

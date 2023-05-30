@@ -1,6 +1,6 @@
 "use client"
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
+// /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -8,19 +8,25 @@ import { Experience } from '../components/Experience';
 import { Footer } from '../components/Footer';
 import { HomeHero } from '../components/HomeHero';
 import { Knowledge } from '../components/Knowledge';
+import { LatestProjects } from '../components/LatestProjects';
+
+import { api } from '../lib/axios';
+
+import { ProjectType } from '../types/ProjectType';
 
 import { HomeContainer } from './styles';
 
-// type getLatestProjectsApiPrismicProps = {
-//   slug: string;
-//   title: string;
-//   type: string;
-//   thumbnail: string;
-// }
-
 export default function Home() {
+  const [latestProjects, setLatestProjects] = useState<ProjectType[]>([])
+
+  async function getDataApi() {
+    const response = await api.get('/getLatestProjects')
+    setLatestProjects(response.data)
+  }
+
   useEffect(() => {
     Aos.init({ duration: 1500 });
+    getDataApi()
   }, [])
 
   return (
@@ -29,7 +35,7 @@ export default function Home() {
         <div>
           <HomeHero />
           <Experience />
-          {/* <LatestProjects latestProjects={latestProjects} /> */}
+          <LatestProjects latestProjects={latestProjects} />
           <Knowledge />
         </div>
       </HomeContainer>

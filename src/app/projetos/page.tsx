@@ -1,22 +1,28 @@
 "use client"
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { ProjectsCard } from '../../components/reusable/ProjectsCard';
 import { LoadingScreen } from '../../components/LoadingScreen';
 
+import { ProjectType } from '../../types/ProjectType';
+import { api } from '../../lib/axios';
+
 import { ProjetosContainer } from './styles';
 
-type getProjectsApiPrismicProps = {
-  slug: string;
-  title: string;
-  type: string;
-  thumbnail: string;
-}
-
 export default function Projetos() {
-  const [projects, setProjects] = useState<getProjectsApiPrismicProps[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
   const [loading, setLoading] = useState(true);
+
+  async function getDataApi() {
+    const response = await api.get('/getAllProjects')
+    setProjects(response.data)
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    getDataApi()
+  }, [])
 
   return (
     <ProjetosContainer data-testid="container" className='projects'>

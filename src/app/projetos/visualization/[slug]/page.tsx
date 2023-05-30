@@ -1,6 +1,6 @@
 "use client"
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
@@ -8,30 +8,40 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { BannerProject } from '../../../../components/reusable/BannerProject';
 import { LoadingScreen } from '../../../../components/LoadingScreen';
 
+import { VisualizationProjectType } from '../../../../types/VisualizationProjectType';
+
+import { api } from '../../../../lib/axios';
+
 import { VisualizationOfAProjectContainer } from './styles';
 
-type getVisualizationProjectProps = {
-  slug: string;
-  title: string;
-  type: string;
-  description: string;
-  projetoGithub?: string;
-  projetoOnline?: string;
-  techs: [
-    text: string,
-  ];
-  thumbnail: string;
-  createdAt: string;
-  updateAt: string;
+type Props = {
+  params: {
+    slug: string;
+  }
 }
 
-export default function VisualizationOfAProject() {
-  const [loading, setLoading] = useState(false);
-  const [visualizationProject, setVisualizationProject] = useState({} as getVisualizationProjectProps);
+export default function VisualizationOfAProject({ params }: Props) {
+  const slug = params.slug
+
+  const [loading, setLoading] = useState(true);
+  const [visualizationProject, setVisualizationProject] = useState({} as VisualizationProjectType);
 
   function handleOpenLink(link?: string) {
     window.open(link);
   }
+
+  async function getDataApi() {
+    const response = await api.get('/getOneProject', {
+      params: { slug }
+    })
+    console.log(response.data)
+    setVisualizationProject(response.data)
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    getDataApi()
+  }, [])
 
   return (
     <VisualizationOfAProjectContainer>
